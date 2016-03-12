@@ -1,0 +1,7 @@
+blood PresenceOfBlood
+carchase CarChace
+coldarms PresenceOfColdArm
+fights Fight
+fire PresenceOfFire
+firearms PresenceOfFirearm
+gore GoryScene

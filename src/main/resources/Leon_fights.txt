@@ -1,0 +1,35 @@
+5518 5570 distant attack
+6420 6526 distant attack
+7320 7364 1vs1
+8396 8503 distant attack
+9499 9690 distant attack
+21551 21661 1vs1
+26747 26798 1vs1
+34971 35028 distant attack
+35211 35302 distant attack
+35559 35605 distant attack
+39618 39657 distant attack
+39658 39939 distant attack
+40279 40486 distant attack
+41079 41282 distant attack
+41989 42009 distant attack
+43133 43175 distant attack
+61011 61119 distant attack
+71761 72702 distant attack
+72703 72811 1vs1
+72904 72963 1vs1
+111384 111414 distant attack
+111478 111527 distant attack
+111758 111798 distant attack
+114600 114625 1vs1
+114708 114752 1vs1
+115486 115556 distant attack
+120552 120635 1vs1
+123367 123393 distant attack
+125071 125390 distant attack
+127289 127321 distant attack
+127405 127711 distant attack
+128827 129138 distant attack
+134081 134390 distant attack
+140933 141441 distant attack
+143174 143551 distant attack

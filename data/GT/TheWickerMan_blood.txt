@@ -1,0 +1,17 @@
+22928 22990 unnoticeable
+23064 23128 unnoticeable
+23294 23338 unnoticeable
+23429 23478 unnoticeable
+23743 23784 unnoticeable
+23863 23918 unnoticeable
+24027 24066 unnoticeable
+24368 24497 unnoticeable
+24587 24644 unnoticeable
+24668 24709 unnoticeable
+25232 25265 unnoticeable
+25690 25736 unnoticeable
+25838 26011 unnoticeable
+116293 116320 unnoticeable
+116352 116376 low
+116430 116446 low
+116652 116737 unnoticeable

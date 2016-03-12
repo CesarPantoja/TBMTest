@@ -1,0 +1,3 @@
+explosions Explosion
+gunshots GunShot
+screams Scream

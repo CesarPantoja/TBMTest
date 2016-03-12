@@ -1,0 +1,156 @@
+44322 44518 pirate plays with wooden eye, pirate puts in wooden eye
+53447 53646 gruesome skeleton arm
+53733 53748 gruesome skeleton arm
+84740 84805 gruesome skeletons
+84821 84867 gruesome skeletons
+84868 84908 gruesome skeletons
+84909 84942 gruesome skeletons
+84943 84987 gruesome skeletons
+84988 85055 gruesome skeletons
+85056 85108 gruesome skeletons
+85109 85128 gruesome skeletons
+85139 85149 gruesome skeletons
+85198 85210 gruesome skeletons
+85211 85237 gruesome skeletons
+85255 85270 gruesome skeleton
+85271 85316 gruesome skeletons
+85317 85343 gruesome skeletons
+85344 85369 gruesome skeletons
+85371 85384 gruesome skeletons
+85385 85412 gruesome skeletons
+85413 85449 gruesome skeletons
+85450 85472 gruesome skeletons
+85473 85492 gruesome skeletons
+85509 85537 gruesome skeleton
+85538 85557 gruesome skeleton
+85561 85602 gruesome skeleton
+85603 85629 gruesome skeleton
+85630 85645 gruesome skeleton
+85646 85666 gruesome skeleton
+85667 85683 gruesome skeleton
+85684 85701 gruesome skeleton
+85702 85754 gruesome skeleton
+85755 85850 gruesome skeleton
+86037 86053 gruesome animal skeleton
+86075 86127 gruesome animal skeleton
+86227 86334 gruesome skeletons
+86350 86446 gruesome skeletons
+86840 86924 gruesome skeleton arm
+86934 87048 gruesome skeleton 
+87049 87077 gruesome skeletons
+87078 87245 gruesome skeleton 
+87246 87272 gruesome skeletons
+87273 87380 gruesome skeletons
+87381 87456 gruesome skeleton
+87457 87504 gruesome skeletons
+87505 87552 gruesome skeleton
+87553 87606 gruesome skeletons
+123165 123295 wooden eye with fork
+123296 123389 wooden eye with fork is poped out
+123390 123478 wooden eye with fork
+156110 156119 gruesome skeletons
+156120 156200 gruesome skeletons
+156201 156273 gruesome skeletons
+156274 156425 gruesome skeletons
+156764 156876 gruesome skeletons
+157364 157525 gruesome skeletons
+157526 157629 gruesome skeletons
+158251 158342 gruesome skeleton
+158693 158758 gruesome skeletons
+158759 158943 gruesome skeletons
+159324 159420 gruesome skeletons
+159421 159443 gruesome skeletons
+159444 159603 gruesome skeletons
+159604 159749 gruesome skeletons 
+160082 160157 gruesome skeletons
+160158 160182 gruesome skeletons
+160213 160264 gruesome skeletons
+160290 160330 gruesome skeletons
+160348 160392 gruesome skeletons
+160393 160428 gruesome skeletons
+160429 160466 gruesome skeletons
+160467 160530 gruesome skeletons
+160599 160650 gruesome skeletons
+160651 160778 gruesome skeletons
+162144 162159 gruesome skeleton
+162187 162214 gruesome skeleton
+162231 162269 gruesome skeleton
+163217 163235 gruesome animal skeleton
+163236 163272 gruesome animal skeleton
+163316 163352 gruesome animal skeleton
+163386 163498 gruesome animal skeleton
+163523 163551 gruesome skeletons & animal skeleton
+163578 163622 gruesome skeletons
+163792 163870 gruesome skeletons
+164019 164100 gruesome skeletons
+164101 164195 gruesome skeletons
+164264 164345 gruesome skeleton
+164346 164443 gruesome skeletons
+164553 164686 gruesome skeletons
+165192 165264 gruesome skeleton
+165295 165418 gruesome skeletons
+165465 165513 gruesome skeleton arm
+165562 165607 gruesome skeleton arm
+166258 166354 gruesome skeleton
+166391 166498 gruesome skeleton
+166612 166642 gruesome skeleton
+166643 166805 gruesome skeleton
+166843 166855 gruesome skeletons
+166856 166870 gruesome skeletons
+166871 166883 gruesome skeleton
+166889 166910 gruesome skeletons
+166921 166959 gruesome skeleton
+166961 166983 gruesome skeletons
+166991 167032 gruesome skeletons
+167077 167098 gruesome skeleton
+167132 167150 gruesome skeleton
+167296 167332 gruesome skeleton arm
+167409 167464 gruesome skeleton arm
+167482 167537 gruesome skeletons
+167538 167558 gruesome skeletons
+167600 167727 gruesome skeleton arm
+167747 167764 gruesome skeleton arm
+167921 168181 gruesome skeletons
+168182 168236 gruesome skeletons
+168565 168580 gruesome skeleton
+168581 168832 gruesome skeleton
+168833 168884 gruesome skeleton
+168885 168961 gruesome skeleton
+169180 169353 gruesome skeletons
+169380 169399 gruesome skeletons
+169400 169421 gruesome skeletons
+169422 169438 gruesome skeletons
+170591 170814 gruesome skeletons
+170874 170950 gruesome skeletons
+171137 171162 gruesome skeletons
+171202 171240 gruesome skeletons
+171241 171314 gruesome skeletons
+171315 171355 gruesome skeletons
+171356 171412 gruesome skeletons
+171413 171455 gruesome skeletons
+171456 171529 gruesome skeletons
+171560 171600 gruesome skeletons
+171601 171624 gruesome skeletons
+171625 171647 gruesome skeletons
+171648 171688 gruesome skeletons
+171689 171752 gruesome skeletons
+171753 171789 gruesome skeletons
+171790 171816 gruesome skeletons
+171817 171921 gruesome skeletons, wooden eye pops out
+171922 172009 gruesome skeletons, wooden eye rolling
+172070 172125 gruesome skeletons
+172326 172389 gruesome skeletons
+172730 172773 gruesome skeletons
+172774 172834 gruesome skeletons
+172835 172949 gruesome skeletons
+172950 173008 gruesome skeletons
+173009 173028 gruesome skeletons
+173029 173036 gruesome skeletons
+173038 173048 gruesome skeletons
+173129 173245 gruesome skeletons
+173272 173477 gruesome skeletons
+173612 173625 gruesome skeleton
+173626 173688 gruesome skeletons
+176639 176709 pirate puts in wooden eye
+176758 176846 pirate puts in wooden eye
+

@@ -1,0 +1,395 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY TBM "http://mmv.eecs.qmul.ac.uk/TBM.owl#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#"
+     xml:base="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:TBM="http://mmv.eecs.qmul.ac.uk/TBM.owl#">
+    <owl:Ontology rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection">
+        <owl:imports rdf:resource="http://mmv.eecs.qmul.ac.uk/TBM.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#hasEvent -->
+
+    <owl:ObjectProperty rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#hasEvent">
+        <rdfs:range rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Event"/>
+        <rdfs:domain rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Frame"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#hasFrame -->
+
+    <owl:ObjectProperty rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#hasFrame">
+        <rdfs:range rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Frame"/>
+        <rdfs:domain rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#MediaItem"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#hasFrameNumber -->
+
+    <owl:DatatypeProperty rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#hasFrameNumber">
+        <rdfs:domain rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Frame"/>
+        <rdfs:range rdf:resource="&xsd;unsignedLong"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#CarChace -->
+
+    <owl:Class rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#CarChace">
+        <rdfs:subClassOf rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Event"/>
+    </owl:Class>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Event -->
+
+    <owl:Class rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Event">
+        <rdfs:subClassOf rdf:resource="&TBM;Potential"/>
+        <owl:disjointWith rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Frame"/>
+    </owl:Class>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Explosion -->
+
+    <owl:Class rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Explosion">
+        <rdfs:subClassOf rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Event"/>
+    </owl:Class>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Fight -->
+
+    <owl:Class rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Fight">
+        <rdfs:subClassOf rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Event"/>
+    </owl:Class>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Frame -->
+
+    <owl:Class rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Frame">
+        <rdfs:subClassOf rdf:resource="&TBM;Potential"/>
+    </owl:Class>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#GoryScene -->
+
+    <owl:Class rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#GoryScene">
+        <rdfs:subClassOf rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Event"/>
+    </owl:Class>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#GunShot -->
+
+    <owl:Class rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#GunShot">
+        <rdfs:subClassOf rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Event"/>
+    </owl:Class>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#MediaItem -->
+
+    <owl:Class rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#MediaItem">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#hasFrame"/>
+                <owl:someValuesFrom rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Frame"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#PresenceOfBlood -->
+
+    <owl:Class rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#PresenceOfBlood">
+        <rdfs:subClassOf rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Event"/>
+    </owl:Class>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#PresenceOfColdArm -->
+
+    <owl:Class rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#PresenceOfColdArm">
+        <rdfs:subClassOf rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Event"/>
+    </owl:Class>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#PresenceOfFire -->
+
+    <owl:Class rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#PresenceOfFire">
+        <rdfs:subClassOf rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Event"/>
+    </owl:Class>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#PresenceOfFirearm -->
+
+    <owl:Class rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#PresenceOfFirearm">
+        <rdfs:subClassOf rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Event"/>
+    </owl:Class>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Scream -->
+
+    <owl:Class rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Scream">
+        <rdfs:subClassOf rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Event"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#blood -->
+
+    <owl:NamedIndividual rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#blood">
+        <rdf:type rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#PresenceOfBlood"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#carchase -->
+
+    <owl:NamedIndividual rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#carchase">
+        <rdf:type rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#CarChace"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#coldarms -->
+
+    <owl:NamedIndividual rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#coldarms">
+        <rdf:type rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#PresenceOfColdArm"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#explosions -->
+
+    <owl:NamedIndividual rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#explosions">
+        <rdf:type rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Explosion"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#fights -->
+
+    <owl:NamedIndividual rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#fights">
+        <rdf:type rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Fight"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#fire -->
+
+    <owl:NamedIndividual rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#fire">
+        <rdf:type rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#PresenceOfFire"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#firearms -->
+
+    <owl:NamedIndividual rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#firearms">
+        <rdf:type rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#PresenceOfFirearm"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#gore -->
+
+    <owl:NamedIndividual rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#gore">
+        <rdf:type rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#GoryScene"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#gunshots -->
+
+    <owl:NamedIndividual rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#gunshots">
+        <rdf:type rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#GunShot"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#no_blood -->
+
+    <owl:NamedIndividual rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#no_blood">
+        <rdf:type rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#PresenceOfBlood"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#no_carchase -->
+
+    <owl:NamedIndividual rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#no_carchase">
+        <rdf:type rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#CarChace"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#no_coldarms -->
+
+    <owl:NamedIndividual rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#no_coldarms">
+        <rdf:type rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#PresenceOfColdArm"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#no_explosions -->
+
+    <owl:NamedIndividual rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#no_explosions">
+        <rdf:type rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Explosion"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#no_fights -->
+
+    <owl:NamedIndividual rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#no_fights">
+        <rdf:type rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Fight"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#no_fire -->
+
+    <owl:NamedIndividual rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#no_fire">
+        <rdf:type rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#PresenceOfFire"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#no_firearms -->
+
+    <owl:NamedIndividual rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#no_firearms">
+        <rdf:type rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#PresenceOfFirearm"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#no_gore -->
+
+    <owl:NamedIndividual rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#no_gore">
+        <rdf:type rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#GoryScene"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#no_gunshots -->
+
+    <owl:NamedIndividual rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#no_gunshots">
+        <rdf:type rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#GunShot"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#no_screams -->
+
+    <owl:NamedIndividual rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#no_screams">
+        <rdf:type rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Scream"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#screams -->
+
+    <owl:NamedIndividual rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#screams">
+        <rdf:type rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Scream"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#CarChace"/>
+            <rdf:Description rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Explosion"/>
+            <rdf:Description rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Fight"/>
+            <rdf:Description rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#GoryScene"/>
+            <rdf:Description rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#GunShot"/>
+            <rdf:Description rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#PresenceOfBlood"/>
+            <rdf:Description rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#PresenceOfColdArm"/>
+            <rdf:Description rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#PresenceOfFire"/>
+            <rdf:Description rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#PresenceOfFirearm"/>
+            <rdf:Description rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Scream"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+

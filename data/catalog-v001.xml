@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <uri id="Imports Wizard Entry" name="http://www.w3.org/2003/11/swrl" uri="http://www.daml.org/rules/proposal/swrl.owl"/>
+    <uri id="Imports Wizard Entry" name="http://www.w3.org/2003/11/swrl" uri="swrl.owl"/>
+    <uri id="Imports Wizard Entry" name="http://www.w3.org/2003/11/swrl" uri="http://swrl.stanford.edu/ontologies/swrl.owl"/>
+    <uri id="Imports Wizard Entry" name="http://mmv.eecs.qmul.ac.uk/TBM.owl" uri="file:/C:/Users/Cesar/Google%20Drive/th/TBM.owl"/>
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
+        <uri id="Automatically generated entry, Timestamp=1455578602083" name="duplicate:http://mmv.eecs.qmul.ac.uk/CLUE.owl" uri="CLUE.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1455578602083" name="duplicate:http://mmv.eecs.qmul.ac.uk/CLUE.owl" uri="CLUE.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1455578602083" name="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection" uri="violentSceneDetection.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1455578602083" name="http://www.w3.org/2003/11/swrl" uri="swrl.owl"/>
+    </group>
+</catalog>

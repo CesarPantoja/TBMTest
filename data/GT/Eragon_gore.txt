@@ -1,0 +1,80 @@
+27768 27827 wormy creatures
+27846 27867 wormy creatures
+27868 27904 wormy creatures
+27905 27948 wormy creatures
+38283 38357 wormy creatures
+38458 38504 wormy creatures
+38523 38547 wormy creatures
+38592 38610 wormy creatures
+38611 38642 wormy creatures
+38718 38741 wormy creatures
+38786 38798 wormy creatures
+53905 54100 wormy creatures
+74024 74056 wormy creatures
+74057 74102 wormy creatures
+74103 74123 wormy creatures
+74603 74617 wormy creatures
+74618 74635 wormy creatures
+74768 74801 wormy creatures
+74802 74817 wormy creatures
+74827 74849 wormy creatures
+74850 74861 wormy creatures
+75089 75103 wormy creatures
+75104 75117 wormy creatures
+75118 75138 wormy creatures
+75139 75150 wormy creatures
+75151 75167 wormy creatures
+75168 75176 wormy creatures
+75188 75207 wormy creatures
+75208 75220 wormy creatures
+75221 75265 wormy creatures
+75384 75398 wormy creatures
+75399 75413 wormy creatures
+75414 75432 wormy creatures
+75434 75447 wormy creatures
+75448 75464 wormy creatures
+75480 75507 wormy creatures
+75508 75542 wormy creatures
+75543 75559 wormy creatures
+75569 75590 wormy creatures
+75591 75598 wormy creatures
+75599 75605 wormy creatures
+75606 75618 wormy creatures
+75619 75632 wormy creatures
+75639 75643 wormy creatures
+75644 75671 wormy creatures
+75672 75702 wormy creatures
+75703 75735 wormy creatures
+75736 75744 wormy creatures
+75745 75762 wormy creatures
+75763 75776 wormy creatures
+75777 75787 wormy creatures
+75788 75801 wormy creatures
+75802 75813 wormy creatures
+75840 75886 wormy creatures
+75887 75942 wormy creatures
+81760 82105 nail into creature's head
+111512 111695 crual face of wizard
+111758 111861 crual face of wizard
+111976 112170 crual face of wizard
+122866 123022 crual face of wizard
+123512 123581 crual face of wizard
+123641 123717 crual face of wizard
+123785 123832 crual face of wizard
+123927 123975 crual face of wizard
+124737 124808 crual face of wizard
+124960 124980 crual face of wizard
+125255 125281 crual face of wizard
+126143 126187 crual face of wizard
+126551 126598 crual face of wizard
+127125 127147 crual face of wizard
+128335 128354 crual face of wizard
+128357 128360 crual face of wizard
+128556 128590 crual face of wizard
+128650 128679 crual face of wizard
+128954 128977 crual face of wizard
+128978 129020 crual face of wizard
+129048 129125 crual face of wizard
+129126 129171 crual face of wizard
+129172 129200
+129201 129262
