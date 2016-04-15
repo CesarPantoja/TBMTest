@@ -5,17 +5,12 @@
  */
 package ac.uk.qmul.mmv.tbmtest;
 
-import ac.uk.qmul.mmv.tbm.arq.TBM_Belief;
-import ac.uk.qmul.mmv.tbm.arq.TBM_Doubt;
-import ac.uk.qmul.mmv.tbm.arq.TBM_Ignorance;
-import ac.uk.qmul.mmv.tbm.arq.TBM_Plausibility;
 import ac.uk.qmul.mmv.tbm.model.TBMFocalElement;
 import ac.uk.qmul.mmv.tbm.model.TBMModel;
 import ac.uk.qmul.mmv.tbm.model.TBMModelFactory;
 import ac.uk.qmul.mmv.tbm.model.TBMPotential;
 import ac.uk.qmul.mmv.tbm.model.TBMVarDomain;
-import ac.uk.qmul.mmv.tbm.vocabulary.TBM;
-import java.io.FileWriter;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -31,13 +26,14 @@ import org.apache.jena.query.Query;
 import org.apache.jena.query.QueryExecution;
 import org.apache.jena.query.QueryExecutionFactory;
 import org.apache.jena.query.QueryFactory;
-import org.apache.jena.query.ReadWrite;
 import org.apache.jena.query.ResultSet;
 import org.apache.jena.query.ResultSetFormatter;
+import org.apache.jena.rdf.model.NodeIterator;
 import org.apache.jena.rdf.model.Property;
 import org.apache.jena.rdf.model.Resource;
-import org.apache.jena.sparql.function.FunctionRegistry;
+import org.apache.jena.rdf.model.StmtIterator;
 import org.apache.jena.tdb.TDBFactory;
+import org.apache.jena.util.iterator.ExtendedIterator;
 import org.apache.jena.vocabulary.RDF;
 
 /**
@@ -46,31 +42,39 @@ import org.apache.jena.vocabulary.RDF;
  */
 public class Coocurrence {
 
+    private static final Logger LOG = Logger.getLogger(Coocurrence.class.getName());
+
     public static void main(String[] args) {
         try {
+            //model = dataset.getDefaultModel() ;
 
-            // <editor-fold defaultstate="collapsed" desc="Training">
-            // <editor-fold defaultstate="collapsed" desc="Calculate coocurrence">
-            //calculate coocurrence
-            //read concept by concept and store them in an array
             HashMap<String, HashMap<String, BitSet>> movies = new HashMap<>();
-
+            HashMap<String, TBMPotential> potentials = new HashMap<>();
             HashMap<String, String> vars = new HashMap<>();
 
             Set<String> video_concepts = new HashSet<>();
-            Files.lines(Paths.get("data/video_concepts.txt")).forEach(concept -> {
-                String[] parts = concept.split(" ");
-                vars.put(parts[0], parts[1]);
-                video_concepts.add(parts[0]);
-            });
+            Files.lines(Paths.get("conf/video_concepts.txt"))
+                    .filter(line -> !line.startsWith("#"))
+                    .forEach(concept -> {
+                        String[] parts = concept.split(" ");
+                        vars.put(parts[0], parts[1]);
+                        video_concepts.add(parts[0]);
+                    });
 
             Set<String> audio_concepts = new HashSet<>();
-            Files.lines(Paths.get("data/audio_concepts.txt")).forEach(concept -> {
-                String[] parts = concept.split(" ");
-                vars.put(parts[0], parts[1]);
-                audio_concepts.add(parts[0]);
-            });
+            Files.lines(Paths.get("conf/audio_concepts.txt"))
+                    .filter(line -> !line.startsWith("#"))
+                    .forEach(concept -> {
+                        String[] parts = concept.split(" ");
+                        vars.put(parts[0], parts[1]);
+                        audio_concepts.add(parts[0]);
+                    });
 
+            // <editor-fold defaultstate="collapsed" desc="Training">
+            // <editor-fold defaultstate="collapsed" desc="Calculate coocurrence">
+            LOG.log(Level.INFO, "Calculating coocurrences");
+            //calculate coocurrence
+            //read concept by concept and store them in an array
             LoadMovies(movies, video_concepts, audio_concepts);
 
             HashMap<String, Integer> count = new HashMap<>();
@@ -129,192 +133,262 @@ public class Coocurrence {
             });*/
             // </editor-fold>
             // <editor-fold defaultstate="collapsed" desc="Compute combined potentials for each concept">
+            LOG.log(Level.INFO, "Computing combined potentials");
             String ont = "http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#";
-            String directory = "C:/db/Dataset2";
-            Dataset dataset = TDBFactory.createDataset(directory);
 
-            dataset.begin(ReadWrite.WRITE);
+            String directory = System.getProperty("user.dir");
 
-            //Reasoner reasoner = TBMReasonerFactory.theInstance().create(null);
-            TBMModel model = TBMModelFactory.createTBMModel(dataset.getDefaultModel());
-            //model = dataset.getDefaultModel() ;
-            dataset.end();
-            model.read("file:data/violentSceneDetection.owl");
+            //LOG.log(Level.INFO, "Directory: \"{0}\"", directory);
+            String datasetPath = directory + File.separator + "db";
+            new File(datasetPath).mkdirs();
+            Dataset dataset = TDBFactory.createDataset(datasetPath);
 
-            HashMap<String, TBMPotential> potentials = new HashMap<>();
+            try (TBMModel model = TBMModelFactory.createTBMModel(dataset.getDefaultModel())) {
+                //try (TBMModel model = TBMModelFactory.createTBMModel(null)) {
+                model.read("file:conf/violentSceneDetection.owl");
+                Property hasFrame = model.createProperty(ont + "hasFrame");
+                Property hasFrameNumber = model.createProperty(ont + "hasFrameNumber");
+                //Resource Event = model.createResource(ont + "Event");
+                Property hasGlobalPotential = model.createProperty(ont + "hasGlobalPotential");
+                Resource frameType = model.createResource(ont + "Frame");
+                //count.keySet().forEach(conceptX -> {
+                //create empty global potential for concept
 
-            //count.keySet().forEach(conceptX -> {
-            //create empty global potential for concept
-            for (String conceptX : count.keySet()) {
+                //TBMModel conceptsModel = TBMModelFactory.createTBMModel(null);
+                for (String conceptX : count.keySet()) {
 
-                TBMPotential p = createEmptyGlobalPotential(model, ont, conceptX, vars);
+                    try (NodeIterator iter = model.listObjectsOfProperty(model.createResource(ont + vars.get(conceptX)), hasGlobalPotential)) {
+                        if (iter.hasNext()) {
+                            iter.forEachRemaining(potential -> potentials.put(conceptX, potential.as(TBMPotential.class)));
+                        } else {
+                            //dataset.begin(ReadWrite.WRITE);
 
-                //printPotential(p);
-                //for each other concept
-                for (String conceptY : count.keySet()) {
-                    if (!conceptX.equals(conceptY)) {
-                        //System.out.printf("%s - %s\n", conceptX, conceptY);
-                        double mass = coocurrence.get(conceptX).get(conceptY);
-                        //mass=mass>0.25?mass:0;
+                            //LOG.log(Level.INFO, "################ Before create empty global pot {0}", conceptX);
+                            TBMPotential p = createEmptyGlobalPotential(model, ont, conceptX, vars);
+                            //LOG.log(Level.INFO, "After ---------------");
+
+                            //printPotential(p);
+                            //for each other concept
+                            for (String conceptY : count.keySet()) {
+                                if (!conceptX.equals(conceptY)) {
+                                    //System.out.printf("%s - %s\n", conceptX, conceptY);
+                                    double mass = coocurrence.get(conceptX).get(conceptY);
+                                    //mass=mass>0.25?mass:0;
+
+                                    TBMVarDomain d = model.createDomain();
+                                    d.addVariable(model.getResource(ont + vars.get(conceptX)));
+                                    d.addVariable(model.getResource(ont + vars.get(conceptY)));
+
+                                    TBMPotential newP = model.createPotential();
+                                    newP.setDomain(d);
+
+                                    if (mass != 0) {
+                                        TBMFocalElement fe = model.createFocalElement();
+                                        fe.setDomain(d);
+                                        fe.addConfiguration(model.getResource(ont + conceptX), model.getResource(ont + conceptY));
+                                        fe.setMass(mass);
+                                        newP.addFocalElement(fe);
+                                    }
+                                    if (mass != 1) {
+                                        TBMFocalElement fe1 = model.createFocalElement();
+                                        fe1.setDomain(d);
+                                        fe1.addConfiguration(model.getResource(ont + conceptX), model.getResource(ont + conceptY));
+                                        fe1.addConfiguration(model.getResource(ont + conceptX), model.getResource(ont + "no_" + conceptY));
+                                        fe1.setMass(1 - mass);
+                                        newP.addFocalElement(fe1);
+                                    }
+
+                                    //LOG.log(Level.INFO, "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$Before combine {0}", conceptY);
+                                    TBMPotential combPot = model.combine(p, newP);
+                                    //LOG.log(Level.INFO, "After combine");
+                                    p.remove();
+                                    newP.remove();
+                                    p = combPot;
+                                    if (model.supportsTransactions()) {
+                                        model.commit();
+                                    }
+
+                                }
+                                //  create potential of conceptX and conceptY
+                                //  combine with global potential
+                                //  assign to global potential, delete previous global potential
+                            }
+                            potentials.put(conceptX, p);
+                            model.add(model.getResource(ont + vars.get(conceptX)), hasGlobalPotential, p);
+                            //dataset.end();
+                        }
+                    }
+                }   // </editor-fold>
+                // </editor-fold>
+                // <editor-fold defaultstate="collapsed" desc="Populate KB">
+                Set<String> movies_test = new HashSet<>();
+                Files.lines(Paths.get("conf/movies_test.txt"))
+                        .filter(line -> !line.startsWith("#"))
+                        .forEach(movie -> movies_test.add(movie));
+                Set<String> concepts_test = new HashSet<>();
+                Files.lines(Paths.get("conf/concepts_test.txt"))
+                        .filter(line -> !line.startsWith("#"))
+                        .forEach(concept -> concepts_test.add(concept));
+
+                for (String movie : movies_test) {
+
+                    if (model.contains(model.createResource(ont + movie), RDF.type, model.createResource(ont + "MediaItem"))) {
+                        continue;
+                    }
+
+                    //dataset.begin(ReadWrite.WRITE);
+                    LOG.log(Level.INFO, movie);
+                    Resource movieRes = model.createResource(ont + movie);
+                    model.add(movieRes, RDF.type, model.createResource(ont + "MediaItem"));
+                    
+
+                    for (String concept : concepts_test) {
+
+                        LOG.log(Level.INFO, "**** {0}", concept);
 
                         TBMVarDomain d = model.createDomain();
-                        d.addVariable(model.getResource(ont + vars.get(conceptX)));
-                        d.addVariable(model.getResource(ont + vars.get(conceptY)));
+                        d.addVariable(model.getResource(ont + vars.get(concept)));
 
-                        TBMPotential newP = model.createPotential();
-                        newP.setDomain(d);
+                        for (Integer frame : movies.get(movie).get(concept).stream().toArray()) {
+                            //Integer frame = 33600;
+                            if (frame % 24 != 0) {
+                                continue;
+                            }
 
-                        if (mass != 0) {
-                            TBMFocalElement fe = model.createFocalElement();
-                            fe.setDomain(d);
-                            fe.addConfiguration(model.getResource(ont + conceptX), model.getResource(ont + conceptY));
-                            fe.setMass(mass);
-                            newP.addFocalElement(fe);
+                            //LOG.log(Level.INFO, "### frame {0}", frame);
+
+                            //System.out.println("||||||||||||||||||||||||||| Frame: "+frame+" Concept: "+concept);
+                            //this will create the frame Resource if needed
+                            Resource frameRes = model.createResource(ont + movie + "/frame/" + frame);
+
+                            //if it didn't exist before, create properties
+                            if (!movieRes.hasProperty(hasFrame, frameRes)) {
+
+                                //adds the type and frame number
+                                frameRes.addProperty(RDF.type, frameType)
+                                        .addLiteral(hasFrameNumber, frame);
+
+                                //link frame to movie
+                                movieRes.addProperty(hasFrame, frameRes);
+                            }
+
+                            TBMPotential oldGlobPotential;
+                            //if frame doesn't have global potential, create potential with
+                            // complete ignorance (mass 1 to the entire frame of discenrment)
+                            if (!frameRes.hasProperty(hasGlobalPotential)) {
+                                //create focal element
+                                TBMFocalElement glob = model.createFocalElement();
+                                glob.setDomain(d);
+                                glob.addAllConfigurations();
+                                glob.setMass(1);
+
+                                //create potential with masses
+                                oldGlobPotential = model.createPotential();
+                                oldGlobPotential.setDomain(d);
+                                oldGlobPotential.addFocalElement(glob);
+                            } else {
+                                oldGlobPotential = frameRes.getPropertyResourceValue(hasGlobalPotential).as(TBMPotential.class);
+                            }
+
+                            //combine with global potential
+                            TBMPotential newGlobPotential = model.combine(oldGlobPotential, potentials.get(concept));
+
+                            frameRes.removeAll(hasGlobalPotential);
+                            frameRes.addProperty(hasGlobalPotential, newGlobPotential);
+
+                            //delete tmp FE and Potential
+                            //currFramePotential.remove();
+                            //delete oldGlobPotential and its FEs
+                            oldGlobPotential.remove();
+                            if (model.supportsTransactions()) {
+                                model.commit();
+                            }
+                            
+                            
                         }
-                        if (mass != 1) {
-                            TBMFocalElement fe1 = model.createFocalElement();
-                            fe1.setDomain(d);
-                            fe1.addConfiguration(model.getResource(ont + conceptX), model.getResource(ont + conceptY));
-                            fe1.addConfiguration(model.getResource(ont + conceptX), model.getResource(ont + "no_" + conceptY));
-                            fe1.setMass(1 - mass);
-                            newP.addFocalElement(fe1);
-                        }
-
-                        TBMPotential combPot = model.combine(p, newP);
-                        p.remove();
-                        newP.remove();
-                        p = combPot;
-
                     }
-                    //  create potential of conceptX and conceptY
-                    //  combine with global potential
-                    //  assign to global potential, delete previous global potential
+                    //dataset.end();
+                }   // </editor-fold>
+
+                //query the system and print
+                
+                //dataset.begin(ReadWrite.WRITE);
+                model.createFocalElement(ont + "queryFocalElement").remove();
+                TBMFocalElement query = model.createFocalElement(ont + "queryFocalElement");
+                TBMVarDomain d = model.createDomain();
+                d.addVariable(model.createResource(ont + "Violence"));
+                query.setDomain(d);
+                query.addConfiguration(model.createResource(ont + "violence"));
+                if(model.supportsTransactions()) model.commit();
+                //dataset.end();
+                
+                Resource movie = model.getResource(ont+"Leon");
+                
+                ExtendedIterator<Resource> framesIter = movie.listProperties(hasFrame).mapWith(x -> x.getResource());
+                
+                while(framesIter.hasNext()){
+                    Resource currFrame = framesIter.next();
+                    int frameNo = currFrame.getProperty(hasFrameNumber).getInt();
+                    
+                    TBMPotential p = currFrame.getProperty(hasGlobalPotential).getResource().as(TBMPotential.class);
+                    
+                    //printPotential(p);
+                    
+                    double bel = p.bel(query);
+                    
+                    System.out.println(""+frameNo+","+bel+","+(movies.get("Leon").get("violence").get(frameNo)?1:0));                    
                 }
-                potentials.put(conceptX, p);
-            }
+                /*
+                System.out.println("Enter query");
+                Scanner scanner = new Scanner(System.in);
+                StringBuilder query_string = new StringBuilder();
+                String curr_line;
+                while (!(curr_line = scanner.nextLine()).equals("exit")) {
+                    if (curr_line.endsWith("/")) {
+                        try {
+                            query_string.append(curr_line.substring(0, curr_line.lastIndexOf("/"))).append("\n");
 
-            // </editor-fold>
-            // </editor-fold>
-            // <editor-fold defaultstate="collapsed" desc="Populate KB">
-            Property hasFrame = model.createProperty(ont + "hasFrame");
-            Property hasFrameNumber = model.createProperty(ont + "hasFrameNumber");
-            //Resource Event = model.createResource(ont + "Event");
-            Property hasGlobalPotential = model.createProperty(ont + "hasGlobalPotential");
+                            System.out.println(query_string.toString());
+                            //dataset.begin(ReadWrite.READ);
+                            Query q = QueryFactory.create(query_string.toString());
 
-            Set<String> movies_test = new HashSet<>();
+                            try ( // Execute the query and obtain results
+                                    QueryExecution qe = QueryExecutionFactory.create(q, model)) {
+                                if (q.isSelectType()) {
+                                    ResultSet results = qe.execSelect();
+                                    
+                                    // Output query results
+                                    ResultSetFormatter.out(System.out, results, q);
+                                    // Important - free up resources used running the query
+                                } else if (q.isConstructType()) {
+                                    qe.execConstruct();
+                                    System.out.println("SUCCESS");
+                                } else {
+                                    System.out.println("Query type not recognised");
+                                }
+                            }
 
-            Files.lines(Paths.get("data/movies_test.txt"))
-                    .filter(line -> !line.startsWith("#"))
-                    .forEach(movie -> movies_test.add(movie));
-
-            for (String movie : movies_test) {
-
-                LOG.log(Level.INFO, movie);
-                model.add(model.createResource(ont + movie), RDF.type, model.createResource(ont + "MediaItem"));
-
-                Resource movieRes = model.createResource(ont + movie);
-
-                for (String concept : movies.get(movie).keySet()) {
-                    LOG.log(Level.INFO, "**** {0}", concept);
-
-                    TBMPotential conceptPot = potentials.get(concept);
-
-                    TBMVarDomain d = model.createDomain();
-                    d.addVariable(model.getResource(ont + vars.get(concept)));
-
-                    for (Integer frame : movies.get(movie).get(concept).stream().toArray()) {
-
-                        if (frame % 25 != 0) {
-                            continue;
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        } finally {
+                            //dataset.end();
+                            query_string.setLength(0);
+                            System.out.println("Enter query");
                         }
 
-                        //this will create the frame Resource if needed
-                        Resource frameRes = model.createResource(ont + movie + "/frame/" + frame);
-
-                        //if it didn't exist before, create properties
-                        if (!movieRes.hasProperty(hasFrame)) {
-
-                            //adds the type and frame number
-                            frameRes.addProperty(RDF.type, model.createResource(ont + "Frame"))
-                                    .addLiteral(hasFrameNumber, frame);
-
-                            //link frame to movie
-                            movieRes.addProperty(hasFrame, frameRes);
-                        }
-
-                        TBMPotential oldGlobPotential;
-                        //if frame doesn't have global potential, create potential with 
-                        // complete ignorance (mass 1 to the entire frame of discenrment)
-                        if (!frameRes.hasProperty(hasGlobalPotential)) {
-                            //create focal element                            
-                            TBMFocalElement glob = model.createFocalElement();
-                            glob.setDomain(d);
-                            glob.addAllConfigurations();
-                            glob.setMass(1);
-
-                            //create potential with masses
-                            oldGlobPotential = model.createPotential();
-                            oldGlobPotential.setDomain(d);
-                            oldGlobPotential.addFocalElement(glob);
-                        } else {
-                            oldGlobPotential = frameRes.getPropertyResourceValue(hasGlobalPotential).as(TBMPotential.class);
-                        }
-
-                        //combine with global potential
-                        TBMPotential newGlobPotential = model.combine(oldGlobPotential, conceptPot);
-
-                        frameRes.removeAll(hasGlobalPotential);
-                        frameRes.addProperty(hasGlobalPotential, newGlobPotential);
-
-                        //delete tmp FE and Potential
-                        //currFramePotential.remove();
-                        //delete oldGlobPotential and its FEs
-                        oldGlobPotential.remove();
-
+                    } else {
+                        query_string.append(curr_line).append("\n");
                     }
-                }
+                }*/
+                //insert concepts in knowledge base
+                //learn rules
             }
 
-            // </editor-fold>
-            FunctionRegistry.get().put(TBM.uri + "bel", TBM_Belief.class);
-            FunctionRegistry.get().put(TBM.uri + "pls", TBM_Plausibility.class);
-            FunctionRegistry.get().put(TBM.uri + "dou", TBM_Doubt.class);
-            FunctionRegistry.get().put(TBM.uri + "ign", TBM_Ignorance.class);
-
-            model.write(new FileWriter("data/ont.owl"));
-
-            Scanner scanner = new Scanner(System.in);
-            StringBuilder query_string = new StringBuilder();
-            String curr_line;
-
-            while (!(curr_line = scanner.nextLine()).equals("EXTERMINATE")) {
-                if (curr_line.endsWith("/")) {
-                    query_string.append(curr_line.substring(0, curr_line.lastIndexOf("/"))).append("\n");
-                    System.out.println(query_string.toString());
-                    Query q = QueryFactory.create(query_string.toString());
-
-                    // Execute the query and obtain results
-                    QueryExecution qe = QueryExecutionFactory.create(q, model);
-                    ResultSet results = qe.execSelect();
-
-                    // Output query results	
-                    ResultSetFormatter.out(System.out, results, q);
-                    // Important - free up resources used running the query
-                    qe.close();
-                    query_string.setLength(0);
-                } else {
-                    query_string.append(curr_line).append("\n");
-                }
-            }
-
-            //insert concepts in knowledge base
-            //learn rules
+            System.out.println("finished");
         } catch (IOException ex) {
             Logger.getLogger(Coocurrence.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    private static final Logger LOG = Logger.getLogger(Coocurrence.class.getName());
 
     private static void printPotential(TBMPotential p) {
         System.out.println("Potential: " + p);
@@ -357,7 +431,7 @@ public class Coocurrence {
 
     private static void LoadMovies(HashMap<String, HashMap<String, BitSet>> movies, Set<String> video_concepts, Set<String> audio_concepts) {
         try {
-            Files.lines(Paths.get("data/movies_train.txt")).forEach(movie -> movies.put(movie, new HashMap<>()));
+            Files.lines(Paths.get("conf/movies_train.txt")).forEach(movie -> movies.put(movie, new HashMap<>()));
             LoadConcepts(movies, video_concepts, audio_concepts);
         } catch (IOException ex) {
             Logger.getLogger(Coocurrence.class.getName()).log(Level.SEVERE, null, ex);
@@ -383,7 +457,7 @@ public class Coocurrence {
 
     private static void LoadVideoConcept(String file, BitSet data) {
         try {
-            Files.lines(Paths.get("data/GT/" + file)).forEach(line -> {
+            Files.lines(Paths.get("conf/GT/" + file)).forEach(line -> {
                 if (!line.isEmpty()) {
                     String[] parts = line.split(" ");
 
@@ -401,7 +475,7 @@ public class Coocurrence {
 
     private static void LoadAudioConcept(String file, BitSet data) {
         try {
-            Files.lines(Paths.get("data/GT/" + file)).forEach(line -> {
+            Files.lines(Paths.get("conf/GT/" + file)).forEach(line -> {
                 if (!line.isEmpty()) {
                     String[] parts = line.split(" ");
                     double startTime = Double.parseDouble(parts[0]);

@@ -11,10 +11,15 @@ import ac.uk.qmul.mmv.tbm.model.TBMModel;
 import ac.uk.qmul.mmv.tbm.model.TBMModelFactory;
 import ac.uk.qmul.mmv.tbm.model.TBMPotential;
 import ac.uk.qmul.mmv.tbm.model.TBMVarDomain;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.apache.jena.query.Dataset;
 import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.tdb.TDBFactory;
 
 /**
  *
@@ -23,15 +28,21 @@ import org.apache.jena.rdf.model.Resource;
 public class perfTest {
 
     public static void main(String[] args) throws IOException {
-        FileWriter o = new FileWriter("data/result.csv");
-        test(2, 12, 2, 2, 1000, 1000, 100, 100, o);
-        test(2, 2, 500, 4000, 100, 100, 100, 100, o);
-        test(2, 2, 500, 500, 100, 700, 100, 100, o);
-        test(2, 2, 1000, 1000, 200, 200, 100, 250, o);
+
+        /*args[0] = "D:/db/";
+        args[1] = "data/";*/
+        FileWriter o = new FileWriter("result.csv");
+        //test(2, 12, 2, 2, 1000, 1000, 100, 100, o);
+        //test(2, 2, 500, 1000, 100, 100, 100, 100, o);
+        //test(2, 2, 500, 500, 100, 700, 100, 100, o);
+        //test(2, 2, 1000, 1000, 200, 200, 100, 250, o);
+        test(11, 11, 2, 2, 2, 100, 100, 100, o);
+        //test(11, 11, 2, 2, 2, 100, 100, 100, o);
         o.close();
     }
 
     public static void test(
+            //String dataSet,
             int MIN_NUM_VARIABLES,
             int MAX_NUM_VARIABLES,
             int MIN_NUM_INSTANCES,
@@ -59,7 +70,15 @@ public class perfTest {
                 for (int numFocalElements = MIN_FOCAL_ELEMENTS; numFocalElements <= MAX_FOCAL_ELEMENTS; numFocalElements++) {
                     for (int numConfigs = MIN_CONFIGURATIONS; numConfigs <= MAX_CONFIGURATIONS; numConfigs++) {
 
-                        TBMModel model = TBMModelFactory.createTBMModel(null);
+                        String directory = System.getProperty("user.dir");
+
+                        //LOG.log(Level.INFO, "Directory: \"{0}\"", directory);
+                        String datasetPath = directory + File.separator + "db";
+                        new File(datasetPath).mkdirs();
+                        Dataset dataset = TDBFactory.createDataset(datasetPath);
+
+                        TBMModel model = TBMModelFactory.createTBMModel(dataset.getDefaultModel());
+                        //TBMModel model = TBMModelFactory.createTBMModel(null);
 
                         TBMVarDomain d = model.createDomain();
 
@@ -74,6 +93,10 @@ public class perfTest {
                             for (int j = 0; j < numInstances; j++) {
                                 model.createResource(URI + "var" + i + "inst" + j, var);
                             }
+                        }
+
+                        if (model.supportsTransactions()) {
+                            model.commit();
                         }
 
                         ////Potential 1////
@@ -91,6 +114,7 @@ public class perfTest {
                                 for (int k = 0; k < numVars; k++) {
                                     config.addElement(model.getResource(URI + "var" + k + "inst" + (rn.nextInt(numInstances))));
                                 }
+                                fe.addConfiguration(config);
                             }
                         }
 
@@ -109,9 +133,15 @@ public class perfTest {
                                 for (int k = 0; k < numVars; k++) {
                                     config.addElement(model.getResource(URI + "var" + k + "inst" + (rn.nextInt(numInstances))));
                                 }
+                                fe.addConfiguration(config);
                             }
-
                         }
+
+                        if (model.supportsTransactions()) {
+                            model.commit();
+                        }
+                        
+                        LOG.log(Level.INFO, "Before combine {0}", numFocalElements);
 
                         //System.out.println("numVars,memory,time");
                         long startTime = System.currentTimeMillis();
@@ -119,22 +149,27 @@ public class perfTest {
                         // working code here
                         TBMPotential combPotential = model.combine(p1, p2);
 
+                        if (model.supportsTransactions()) {
+                            model.commit();
+                        }
+
                         long stopTime = System.currentTimeMillis();
+                        LOG.log(Level.INFO, "After combine");
                         long elapsedTime = (stopTime - startTime);
+                        //model.removeAll();
                         // Get the Java runtime
-                        Runtime runtime = Runtime.getRuntime();
+                        //Runtime runtime = Runtime.getRuntime();
                         // Run the garbage collector
-                        runtime.gc();
+                        //runtime.gc();
                         // Calculate the used memory
                         //long memory = runtime.totalMemory() - runtime.freeMemory();
 
                         //System.out.println("numVars,numInstances,numFocalElements,numConfigs,memory,time");
-                        //o.append(String.format("%d,%d,%d,%d,%d,%d\n", numVars, numInstances, numFocalElements, numConfigs, memory, elapsedTime));
                         o.write(String.format("%d,%d,%d,%d,%d\n", numVars, numInstances, numFocalElements, numConfigs, /*memory,*/ elapsedTime));
                         o.flush();
-                        model.close();
+                        //model.close();
                         //System.out.printf("%d,%d,%d,%d,%d\n", numVars, numInstances, numFocalElements, numConfigs, /*memory,*/ elapsedTime);
-                        
+
                         /*try {
                             model.write(new FileWriter("data/test"+numVars+".owl"));
                         } catch (IOException ex) {
@@ -145,12 +180,14 @@ public class perfTest {
             }
         }
 
-        o.flush();
+        System.out.println("Finished");
+        //o.flush();
 
         //create focal elements
         //create configurations
         //combine
         //measure time and memory
     }
+    private static final Logger LOG = Logger.getLogger(perfTest.class.getName());
 
 }
