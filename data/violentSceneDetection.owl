@@ -52,6 +52,16 @@
     
 
 
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#hasGlobalPotential -->
+
+    <owl:ObjectProperty rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#hasGlobalPotential">
+        <rdfs:range rdf:resource="&TBM;Potential"/>
+        <rdfs:domain rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Event"/>
+        <rdfs:domain rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Frame"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
@@ -94,7 +104,6 @@
     <!-- http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Event -->
 
     <owl:Class rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Event">
-        <rdfs:subClassOf rdf:resource="&TBM;Potential"/>
         <owl:disjointWith rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Frame"/>
     </owl:Class>
     
@@ -118,9 +127,7 @@
 
     <!-- http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Frame -->
 
-    <owl:Class rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Frame">
-        <rdfs:subClassOf rdf:resource="&TBM;Potential"/>
-    </owl:Class>
+    <owl:Class rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Frame"/>
     
 
 
@@ -188,6 +195,14 @@
     <!-- http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Scream -->
 
     <owl:Class rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Scream">
+        <rdfs:subClassOf rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Event"/>
+    </owl:Class>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Violence -->
+
+    <owl:Class rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Violence">
         <rdfs:subClassOf rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Event"/>
     </owl:Class>
     
@@ -356,10 +371,26 @@
     
 
 
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#no_violence -->
+
+    <owl:NamedIndividual rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#no_violence">
+        <rdf:type rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Violence"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#screams -->
 
     <owl:NamedIndividual rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#screams">
         <rdf:type rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Scream"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#violence -->
+
+    <owl:NamedIndividual rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#violence">
+        <rdf:type rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection#Violence"/>
     </owl:NamedIndividual>
     
 

@@ -58,3 +58,8 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+target/
+db/
+db - Copy/
+db_clue/
