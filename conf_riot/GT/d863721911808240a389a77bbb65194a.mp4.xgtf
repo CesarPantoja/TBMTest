@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viper xmlns="http://lamp.cfar.umd.edu/viper#" xmlns:data="http://lamp.cfar.umd.edu/viperdata#">
+    <config>
+        <descriptor name="Information" type="FILE">
+            <attribute dynamic="false" name="SOURCETYPE" type="http://lamp.cfar.umd.edu/viperdata#lvalue">
+                <data:lvalue-possibles>
+                    <data:lvalue-enum value="SEQUENCE"/>
+                    <data:lvalue-enum value="FRAMES"/>
+                </data:lvalue-possibles>
+            </attribute>
+            <attribute dynamic="false" name="NUMFRAMES" type="http://lamp.cfar.umd.edu/viperdata#dvalue"/>
+            <attribute dynamic="false" name="FRAMERATE" type="http://lamp.cfar.umd.edu/viperdata#fvalue"/>
+            <attribute dynamic="false" name="H-FRAME-SIZE" type="http://lamp.cfar.umd.edu/viperdata#dvalue"/>
+            <attribute dynamic="false" name="V-FRAME-SIZE" type="http://lamp.cfar.umd.edu/viperdata#dvalue"/>
+        </descriptor>
+        <descriptor name="Concepts" type="OBJECT">
+            <attribute dynamic="true" name="face_covered" type="http://lamp.cfar.umd.edu/viperdata#bvalue">
+                <default>
+                    <data:bvalue value="false"/>
+                </default>
+            </attribute>
+            <attribute dynamic="true" name="fire" type="http://lamp.cfar.umd.edu/viperdata#bvalue">
+                <default>
+                    <data:bvalue value="false"/>
+                </default>
+            </attribute>
+            <attribute dynamic="true" name="smoke" type="http://lamp.cfar.umd.edu/viperdata#bvalue">
+                <default>
+                    <data:bvalue value="false"/>
+                </default>
+            </attribute>
+            <attribute dynamic="true" name="crowd" type="http://lamp.cfar.umd.edu/viperdata#bvalue">
+                <default>
+                    <data:bvalue value="false"/>
+                </default>
+            </attribute>
+            <attribute dynamic="true" name="running" type="http://lamp.cfar.umd.edu/viperdata#bvalue">
+                <default>
+                    <data:bvalue value="false"/>
+                </default>
+            </attribute>
+            <attribute dynamic="true" name="riot" type="http://lamp.cfar.umd.edu/viperdata#bvalue">
+                <default>
+                    <data:bvalue value="false"/>
+                </default>
+            </attribute>
+            <attribute dynamic="true" name="vandalism" type="http://lamp.cfar.umd.edu/viperdata#bvalue">
+                <default>
+                    <data:bvalue value="false"/>
+                </default>
+            </attribute>
+        </descriptor>
+    </config>
+    <data>
+        <sourcefile filename="file:/D:/Research/frames/d863721911808240a389a77bbb65194a.mp4/d863721911808240a389a77bbb65194a.mp4.info">
+            <file id="0" name="Information">
+                <attribute name="SOURCETYPE"/>
+                <attribute name="NUMFRAMES">
+                    <data:dvalue value="45062"/>
+                </attribute>
+                <attribute name="FRAMERATE">
+                    <data:fvalue value="1.0"/>
+                </attribute>
+                <attribute name="H-FRAME-SIZE"/>
+                <attribute name="V-FRAME-SIZE"/>
+            </file>
+            <object framespan="1:45062" id="0" name="Concepts">
+                <attribute name="face_covered">
+                    <data:bvalue framespan="1:48" value="false"/>
+                    <data:bvalue framespan="49:290" value="true"/>
+                    <data:bvalue framespan="291:327" value="false"/>
+                    <data:bvalue framespan="328:737" value="true"/>
+                    <data:bvalue framespan="738:1383" value="false"/>
+                    <data:bvalue framespan="1384:1727" value="true"/>
+                    <data:bvalue framespan="1728:1805" value="false"/>
+                    <data:bvalue framespan="1806:1816" value="true"/>
+                    <data:bvalue framespan="1817:1883" value="false"/>
+                    <data:bvalue framespan="1884:5270" value="true"/>
+                    <data:bvalue framespan="5271:5496" value="false"/>
+                    <data:bvalue framespan="5497:5631" value="true"/>
+                    <data:bvalue framespan="5632:5728" value="false"/>
+                    <data:bvalue framespan="5729:10602" value="true"/>
+                    <data:bvalue framespan="10603:10691" value="false"/>
+                    <data:bvalue framespan="10692:12563" value="true"/>
+                    <data:bvalue framespan="12564:13287" value="false"/>
+                    <data:bvalue framespan="13288:13312" value="true"/>
+                    <data:bvalue framespan="13313:13567" value="false"/>
+                    <data:bvalue framespan="13568:13629" value="true"/>
+                    <data:bvalue framespan="13630:13631" value="false"/>
+                    <data:bvalue framespan="13632:14788" value="true"/>
+                    <data:bvalue framespan="14789:15028" value="false"/>
+                    <data:bvalue framespan="15029:16596" value="true"/>
+                    <data:bvalue framespan="16597:16664" value="false"/>
+                    <data:bvalue framespan="16665:17253" value="true"/>
+                    <data:bvalue framespan="17254:17504" value="false"/>
+                    <data:bvalue framespan="17505:18866" value="true"/>
+                    <data:bvalue framespan="18867:19177" value="false"/>
+                    <data:bvalue framespan="19178:20988" value="true"/>
+                    <data:bvalue framespan="20989:20989" value="false"/>
+                    <data:bvalue framespan="20990:21000" value="true"/>
+                    <data:bvalue framespan="21001:21054" value="false"/>
+                    <data:bvalue framespan="21055:21923" value="true"/>
+                    <data:bvalue framespan="21924:21928" value="false"/>
+                    <data:bvalue framespan="21929:22266" value="true"/>
+                    <data:bvalue framespan="22267:25314" value="false"/>
+                    <data:bvalue framespan="25315:31166" value="true"/>
+                    <data:bvalue framespan="31167:31172" value="false"/>
+                    <data:bvalue framespan="31173:31649" value="true"/>
+                    <data:bvalue framespan="31650:31666" value="false"/>
+                    <data:bvalue framespan="31667:31695" value="true"/>
+                    <data:bvalue framespan="31696:31697" value="false"/>
+                    <data:bvalue framespan="31698:31894" value="true"/>
+                    <data:bvalue framespan="31895:31903" value="false"/>
+                    <data:bvalue framespan="31904:32392" value="true"/>
+                    <data:bvalue framespan="32393:32396" value="false"/>
+                    <data:bvalue framespan="32397:32695" value="true"/>
+                    <data:bvalue framespan="32696:32720" value="false"/>
+                    <data:bvalue framespan="32721:32797" value="true"/>
+                    <data:bvalue framespan="32798:32833" value="false"/>
+                    <data:bvalue framespan="32834:33833" value="true"/>
+                    <data:bvalue framespan="33834:33883" value="false"/>
+                    <data:bvalue framespan="33884:35789" value="true"/>
+                    <data:bvalue framespan="35790:35877" value="false"/>
+                    <data:bvalue framespan="35878:36425" value="true"/>
+                    <data:bvalue framespan="36426:36426" value="false"/>
+                    <data:bvalue framespan="36427:36442" value="true"/>
+                    <data:bvalue framespan="36443:36469" value="false"/>
+                    <data:bvalue framespan="36470:36483" value="true"/>
+                    <data:bvalue framespan="36484:36492" value="false"/>
+                    <data:bvalue framespan="36493:36904" value="true"/>
+                    <data:bvalue framespan="36905:36906" value="false"/>
+                    <data:bvalue framespan="36907:36943" value="true"/>
+                    <data:bvalue framespan="36944:36954" value="false"/>
+                    <data:bvalue framespan="36955:36967" value="true"/>
+                    <data:bvalue framespan="36968:36975" value="false"/>
+                    <data:bvalue framespan="36976:36982" value="true"/>
+                    <data:bvalue framespan="36983:36992" value="false"/>
+                    <data:bvalue framespan="36993:36997" value="true"/>
+                    <data:bvalue framespan="36998:37029" value="false"/>
+                    <data:bvalue framespan="37030:37036" value="true"/>
+                    <data:bvalue framespan="37037:37053" value="false"/>
+                    <data:bvalue framespan="37054:37063" value="true"/>
+                    <data:bvalue framespan="37064:37085" value="false"/>
+                    <data:bvalue framespan="37086:37114" value="true"/>
+                    <data:bvalue framespan="37115:37119" value="false"/>
+                    <data:bvalue framespan="37120:37124" value="true"/>
+                    <data:bvalue framespan="37125:37197" value="false"/>
+                    <data:bvalue framespan="37198:37213" value="true"/>
+                    <data:bvalue framespan="37214:37356" value="false"/>
+                    <data:bvalue framespan="37357:37406" value="true"/>
+                    <data:bvalue framespan="37407:37515" value="false"/>
+                    <data:bvalue framespan="37516:38024" value="true"/>
+                    <data:bvalue framespan="38025:38189" value="false"/>
+                    <data:bvalue framespan="38190:38518" value="true"/>
+                    <data:bvalue framespan="38519:38668" value="false"/>
+                    <data:bvalue framespan="38669:38857" value="true"/>
+                    <data:bvalue framespan="38858:38878" value="false"/>
+                    <data:bvalue framespan="38879:38928" value="true"/>
+                    <data:bvalue framespan="38929:38995" value="false"/>
+                    <data:bvalue framespan="38996:39011" value="true"/>
+                    <data:bvalue framespan="39012:39019" value="false"/>
+                    <data:bvalue framespan="39020:42072" value="true"/>
+                    <data:bvalue framespan="42073:42073" value="false"/>
+                    <data:bvalue framespan="42074:42468" value="true"/>
+                    <data:bvalue framespan="42469:42524" value="false"/>
+                    <data:bvalue framespan="42525:42568" value="true"/>
+                    <data:bvalue framespan="42569:42576" value="false"/>
+                    <data:bvalue framespan="42577:43685" value="true"/>
+                    <data:bvalue framespan="43686:43720" value="false"/>
+                    <data:bvalue framespan="43721:43729" value="true"/>
+                    <data:bvalue framespan="43730:43772" value="false"/>
+                    <data:bvalue framespan="43773:44084" value="true"/>
+                    <data:bvalue framespan="44085:44094" value="false"/>
+                    <data:bvalue framespan="44095:44618" value="true"/>
+                    <data:bvalue framespan="44619:44663" value="false"/>
+                    <data:bvalue framespan="44664:44823" value="true"/>
+                    <data:bvalue framespan="44824:44866" value="false"/>
+                    <data:bvalue framespan="44867:45062" value="true"/>
+                </attribute>
+                <attribute name="fire">
+                    <data:bvalue framespan="1:513" value="true"/>
+                    <data:bvalue framespan="514:731" value="false"/>
+                    <data:bvalue framespan="732:1730" value="true"/>
+                    <data:bvalue framespan="1731:1893" value="false"/>
+                    <data:bvalue framespan="1894:2100" value="true"/>
+                    <data:bvalue framespan="2101:2131" value="false"/>
+                    <data:bvalue framespan="2132:2140" value="true"/>
+                    <data:bvalue framespan="2141:2181" value="false"/>
+                    <data:bvalue framespan="2182:10602" value="true"/>
+                    <data:bvalue framespan="10603:10751" value="false"/>
+                    <data:bvalue framespan="10752:13033" value="true"/>
+                    <data:bvalue framespan="13034:13095" value="false"/>
+                    <data:bvalue framespan="13096:13108" value="true"/>
+                    <data:bvalue framespan="13109:13163" value="false"/>
+                    <data:bvalue framespan="13164:13287" value="true"/>
+                    <data:bvalue framespan="13288:13308" value="false"/>
+                    <data:bvalue framespan="13309:13316" value="true"/>
+                    <data:bvalue framespan="13317:13513" value="false"/>
+                    <data:bvalue framespan="13514:13582" value="true"/>
+                    <data:bvalue framespan="13583:13664" value="false"/>
+                    <data:bvalue framespan="13665:13690" value="true"/>
+                    <data:bvalue framespan="13691:13715" value="false"/>
+                    <data:bvalue framespan="13716:13758" value="true"/>
+                    <data:bvalue framespan="13759:13902" value="false"/>
+                    <data:bvalue framespan="13903:14158" value="true"/>
+                    <data:bvalue framespan="14159:14459" value="false"/>
+                    <data:bvalue framespan="14460:14604" value="true"/>
+                    <data:bvalue framespan="14605:15020" value="false"/>
+                    <data:bvalue framespan="15021:16596" value="true"/>
+                    <data:bvalue framespan="16597:18808" value="false"/>
+                    <data:bvalue framespan="18809:18868" value="true"/>
+                    <data:bvalue framespan="18869:19111" value="false"/>
+                    <data:bvalue framespan="19112:19121" value="true"/>
+                    <data:bvalue framespan="19122:19169" value="false"/>
+                    <data:bvalue framespan="19170:19204" value="true"/>
+                    <data:bvalue framespan="19205:20292" value="false"/>
+                    <data:bvalue framespan="20293:20359" value="true"/>
+                    <data:bvalue framespan="20360:20715" value="false"/>
+                    <data:bvalue framespan="20716:20931" value="true"/>
+                    <data:bvalue framespan="20932:21217" value="false"/>
+                    <data:bvalue framespan="21218:21598" value="true"/>
+                    <data:bvalue framespan="21599:21825" value="false"/>
+                    <data:bvalue framespan="21826:21846" value="true"/>
+                    <data:bvalue framespan="21847:21966" value="false"/>
+                    <data:bvalue framespan="21967:22023" value="true"/>
+                    <data:bvalue framespan="22024:22140" value="false"/>
+                    <data:bvalue framespan="22141:22471" value="true"/>
+                    <data:bvalue framespan="22472:22862" value="false"/>
+                    <data:bvalue framespan="22863:25165" value="true"/>
+                    <data:bvalue framespan="25166:29968" value="false"/>
+                    <data:bvalue framespan="29969:30350" value="true"/>
+                    <data:bvalue framespan="30351:30407" value="false"/>
+                    <data:bvalue framespan="30408:30483" value="true"/>
+                    <data:bvalue framespan="30484:30489" value="false"/>
+                    <data:bvalue framespan="30490:30718" value="true"/>
+                    <data:bvalue framespan="30719:31014" value="false"/>
+                    <data:bvalue framespan="31015:31072" value="true"/>
+                    <data:bvalue framespan="31073:31119" value="false"/>
+                    <data:bvalue framespan="31120:31643" value="true"/>
+                    <data:bvalue framespan="31644:37941" value="false"/>
+                    <data:bvalue framespan="37942:37944" value="true"/>
+                    <data:bvalue framespan="37945:37945" value="false"/>
+                    <data:bvalue framespan="37946:38024" value="true"/>
+                    <data:bvalue framespan="38025:38702" value="false"/>
+                    <data:bvalue framespan="38703:38706" value="true"/>
+                    <data:bvalue framespan="38707:42120" value="false"/>
+                    <data:bvalue framespan="42121:42148" value="true"/>
+                    <data:bvalue framespan="42149:45062" value="false"/>
+                </attribute>
+                <attribute name="smoke">
+                    <data:bvalue framespan="1:1734" value="true"/>
+                    <data:bvalue framespan="1735:1893" value="false"/>
+                    <data:bvalue framespan="1894:31903" value="true"/>
+                    <data:bvalue framespan="31904:42121" value="false"/>
+                    <data:bvalue framespan="42122:42147" value="true"/>
+                    <data:bvalue framespan="42148:45062" value="false"/>
+                </attribute>
+                <attribute name="crowd">
+                    <data:bvalue framespan="1:290" value="true"/>
+                    <data:bvalue framespan="291:506" value="false"/>
+                    <data:bvalue framespan="507:737" value="true"/>
+                    <data:bvalue framespan="738:1328" value="false"/>
+                    <data:bvalue framespan="1329:1568" value="true"/>
+                    <data:bvalue framespan="1569:1691" value="false"/>
+                    <data:bvalue framespan="1692:1720" value="true"/>
+                    <data:bvalue framespan="1721:1796" value="false"/>
+                    <data:bvalue framespan="1797:1884" value="true"/>
+                    <data:bvalue framespan="1885:3830" value="false"/>
+                    <data:bvalue framespan="3831:4038" value="true"/>
+                    <data:bvalue framespan="4039:4190" value="false"/>
+                    <data:bvalue framespan="4191:5631" value="true"/>
+                    <data:bvalue framespan="5632:5891" value="false"/>
+                    <data:bvalue framespan="5892:13114" value="true"/>
+                    <data:bvalue framespan="13115:13152" value="false"/>
+                    <data:bvalue framespan="13153:13314" value="true"/>
+                    <data:bvalue framespan="13315:13318" value="false"/>
+                    <data:bvalue framespan="13319:14138" value="true"/>
+                    <data:bvalue framespan="14139:14322" value="false"/>
+                    <data:bvalue framespan="14323:14685" value="true"/>
+                    <data:bvalue framespan="14686:14712" value="false"/>
+                    <data:bvalue framespan="14713:15010" value="true"/>
+                    <data:bvalue framespan="15011:15025" value="false"/>
+                    <data:bvalue framespan="15026:17310" value="true"/>
+                    <data:bvalue framespan="17311:17504" value="false"/>
+                    <data:bvalue framespan="17505:18882" value="true"/>
+                    <data:bvalue framespan="18883:18895" value="false"/>
+                    <data:bvalue framespan="18896:18937" value="true"/>
+                    <data:bvalue framespan="18938:18963" value="false"/>
+                    <data:bvalue framespan="18964:19084" value="true"/>
+                    <data:bvalue framespan="19085:19098" value="false"/>
+                    <data:bvalue framespan="19099:30316" value="true"/>
+                    <data:bvalue framespan="30317:30321" value="false"/>
+                    <data:bvalue framespan="30322:30929" value="true"/>
+                    <data:bvalue framespan="30930:31006" value="false"/>
+                    <data:bvalue framespan="31007:31067" value="true"/>
+                    <data:bvalue framespan="31068:31217" value="false"/>
+                    <data:bvalue framespan="31218:31250" value="true"/>
+                    <data:bvalue framespan="31251:31266" value="false"/>
+                    <data:bvalue framespan="31267:31643" value="true"/>
+                    <data:bvalue framespan="31644:32517" value="false"/>
+                    <data:bvalue framespan="32518:32595" value="true"/>
+                    <data:bvalue framespan="32596:32613" value="false"/>
+                    <data:bvalue framespan="32614:32652" value="true"/>
+                    <data:bvalue framespan="32653:33019" value="false"/>
+                    <data:bvalue framespan="33020:33032" value="true"/>
+                    <data:bvalue framespan="33033:33194" value="false"/>
+                    <data:bvalue framespan="33195:33434" value="true"/>
+                    <data:bvalue framespan="33435:33463" value="false"/>
+                    <data:bvalue framespan="33464:33547" value="true"/>
+                    <data:bvalue framespan="33548:33598" value="false"/>
+                    <data:bvalue framespan="33599:33729" value="true"/>
+                    <data:bvalue framespan="33730:33940" value="false"/>
+                    <data:bvalue framespan="33941:33986" value="true"/>
+                    <data:bvalue framespan="33987:34239" value="false"/>
+                    <data:bvalue framespan="34240:35741" value="true"/>
+                    <data:bvalue framespan="35742:35925" value="false"/>
+                    <data:bvalue framespan="35926:36338" value="true"/>
+                    <data:bvalue framespan="36339:36656" value="false"/>
+                    <data:bvalue framespan="36657:36704" value="true"/>
+                    <data:bvalue framespan="36705:36930" value="false"/>
+                    <data:bvalue framespan="36931:36936" value="true"/>
+                    <data:bvalue framespan="36937:37098" value="false"/>
+                    <data:bvalue framespan="37099:37114" value="true"/>
+                    <data:bvalue framespan="37115:37121" value="false"/>
+                    <data:bvalue framespan="37122:37199" value="true"/>
+                    <data:bvalue framespan="37200:37555" value="false"/>
+                    <data:bvalue framespan="37556:37577" value="true"/>
+                    <data:bvalue framespan="37578:37626" value="false"/>
+                    <data:bvalue framespan="37627:37689" value="true"/>
+                    <data:bvalue framespan="37690:37908" value="false"/>
+                    <data:bvalue framespan="37909:38024" value="true"/>
+                    <data:bvalue framespan="38025:38060" value="false"/>
+                    <data:bvalue framespan="38061:38079" value="true"/>
+                    <data:bvalue framespan="38080:38090" value="false"/>
+                    <data:bvalue framespan="38091:38159" value="true"/>
+                    <data:bvalue framespan="38160:38180" value="false"/>
+                    <data:bvalue framespan="38181:38231" value="true"/>
+                    <data:bvalue framespan="38232:38473" value="false"/>
+                    <data:bvalue framespan="38474:38527" value="true"/>
+                    <data:bvalue framespan="38528:38600" value="false"/>
+                    <data:bvalue framespan="38601:38675" value="true"/>
+                    <data:bvalue framespan="38676:39144" value="false"/>
+                    <data:bvalue framespan="39145:39222" value="true"/>
+                    <data:bvalue framespan="39223:39296" value="false"/>
+                    <data:bvalue framespan="39297:39417" value="true"/>
+                    <data:bvalue framespan="39418:39473" value="false"/>
+                    <data:bvalue framespan="39474:39604" value="true"/>
+                    <data:bvalue framespan="39605:39651" value="false"/>
+                    <data:bvalue framespan="39652:39768" value="true"/>
+                    <data:bvalue framespan="39769:39951" value="false"/>
+                    <data:bvalue framespan="39952:40010" value="true"/>
+                    <data:bvalue framespan="40011:40240" value="false"/>
+                    <data:bvalue framespan="40241:42065" value="true"/>
+                    <data:bvalue framespan="42066:42117" value="false"/>
+                    <data:bvalue framespan="42118:42430" value="true"/>
+                    <data:bvalue framespan="42431:42489" value="false"/>
+                    <data:bvalue framespan="42490:42566" value="true"/>
+                    <data:bvalue framespan="42567:42576" value="false"/>
+                    <data:bvalue framespan="42577:42658" value="true"/>
+                    <data:bvalue framespan="42659:42704" value="false"/>
+                    <data:bvalue framespan="42705:43015" value="true"/>
+                    <data:bvalue framespan="43016:43139" value="false"/>
+                    <data:bvalue framespan="43140:43156" value="true"/>
+                    <data:bvalue framespan="43157:43318" value="false"/>
+                    <data:bvalue framespan="43319:43663" value="true"/>
+                    <data:bvalue framespan="43664:43792" value="false"/>
+                    <data:bvalue framespan="43793:43830" value="true"/>
+                    <data:bvalue framespan="43831:44056" value="false"/>
+                    <data:bvalue framespan="44057:44183" value="true"/>
+                    <data:bvalue framespan="44184:44260" value="false"/>
+                    <data:bvalue framespan="44261:44377" value="true"/>
+                    <data:bvalue framespan="44378:44445" value="false"/>
+                    <data:bvalue framespan="44446:44463" value="true"/>
+                    <data:bvalue framespan="44464:44697" value="false"/>
+                    <data:bvalue framespan="44698:44766" value="true"/>
+                    <data:bvalue framespan="44767:44778" value="false"/>
+                    <data:bvalue framespan="44779:44815" value="true"/>
+                    <data:bvalue framespan="44816:45062" value="false"/>
+                </attribute>
+                <attribute name="running">
+                    <data:bvalue framespan="1:4472" value="false"/>
+                    <data:bvalue framespan="4473:4615" value="true"/>
+                    <data:bvalue framespan="4616:7535" value="false"/>
+                    <data:bvalue framespan="7536:7645" value="true"/>
+                    <data:bvalue framespan="7646:14138" value="false"/>
+                    <data:bvalue framespan="14139:14158" value="true"/>
+                    <data:bvalue framespan="14159:22165" value="false"/>
+                    <data:bvalue framespan="22166:22474" value="true"/>
+                    <data:bvalue framespan="22475:22649" value="false"/>
+                    <data:bvalue framespan="22650:22703" value="true"/>
+                    <data:bvalue framespan="22704:24386" value="false"/>
+                    <data:bvalue framespan="24387:24502" value="true"/>
+                    <data:bvalue framespan="24503:25355" value="false"/>
+                    <data:bvalue framespan="25356:25702" value="true"/>
+                    <data:bvalue framespan="25703:26421" value="false"/>
+                    <data:bvalue framespan="26422:26671" value="true"/>
+                    <data:bvalue framespan="26672:29979" value="false"/>
+                    <data:bvalue framespan="29980:30035" value="true"/>
+                    <data:bvalue framespan="30036:30078" value="false"/>
+                    <data:bvalue framespan="30079:30114" value="true"/>
+                    <data:bvalue framespan="30115:30136" value="false"/>
+                    <data:bvalue framespan="30137:30169" value="true"/>
+                    <data:bvalue framespan="30170:30793" value="false"/>
+                    <data:bvalue framespan="30794:30879" value="true"/>
+                    <data:bvalue framespan="30880:31904" value="false"/>
+                    <data:bvalue framespan="31905:32238" value="true"/>
+                    <data:bvalue framespan="32239:32670" value="false"/>
+                    <data:bvalue framespan="32671:32695" value="true"/>
+                    <data:bvalue framespan="32696:33344" value="false"/>
+                    <data:bvalue framespan="33345:33401" value="true"/>
+                    <data:bvalue framespan="33402:37029" value="false"/>
+                    <data:bvalue framespan="37030:37036" value="true"/>
+                    <data:bvalue framespan="37037:37051" value="false"/>
+                    <data:bvalue framespan="37052:37094" value="true"/>
+                    <data:bvalue framespan="37095:37894" value="false"/>
+                    <data:bvalue framespan="37895:38024" value="true"/>
+                    <data:bvalue framespan="38025:38045" value="false"/>
+                    <data:bvalue framespan="38046:38061" value="true"/>
+                    <data:bvalue framespan="38062:38121" value="false"/>
+                    <data:bvalue framespan="38122:38177" value="true"/>
+                    <data:bvalue framespan="38178:45062" value="false"/>
+                </attribute>
+                <attribute name="riot">
+                    <data:bvalue framespan="1:290" value="true"/>
+                    <data:bvalue framespan="291:506" value="false"/>
+                    <data:bvalue framespan="507:737" value="true"/>
+                    <data:bvalue framespan="738:1328" value="false"/>
+                    <data:bvalue framespan="1329:1568" value="true"/>
+                    <data:bvalue framespan="1569:1691" value="false"/>
+                    <data:bvalue framespan="1692:1720" value="true"/>
+                    <data:bvalue framespan="1721:3830" value="false"/>
+                    <data:bvalue framespan="3831:4038" value="true"/>
+                    <data:bvalue framespan="4039:4190" value="false"/>
+                    <data:bvalue framespan="4191:5631" value="true"/>
+                    <data:bvalue framespan="5632:5891" value="false"/>
+                    <data:bvalue framespan="5892:13114" value="true"/>
+                    <data:bvalue framespan="13115:13152" value="false"/>
+                    <data:bvalue framespan="13153:13314" value="true"/>
+                    <data:bvalue framespan="13315:13318" value="false"/>
+                    <data:bvalue framespan="13319:14138" value="true"/>
+                    <data:bvalue framespan="14139:14322" value="false"/>
+                    <data:bvalue framespan="14323:14685" value="true"/>
+                    <data:bvalue framespan="14686:14712" value="false"/>
+                    <data:bvalue framespan="14713:15010" value="true"/>
+                    <data:bvalue framespan="15011:15025" value="false"/>
+                    <data:bvalue framespan="15026:17310" value="true"/>
+                    <data:bvalue framespan="17311:17504" value="false"/>
+                    <data:bvalue framespan="17505:18882" value="true"/>
+                    <data:bvalue framespan="18883:18895" value="false"/>
+                    <data:bvalue framespan="18896:18937" value="true"/>
+                    <data:bvalue framespan="18938:19106" value="false"/>
+                    <data:bvalue framespan="19107:30316" value="true"/>
+                    <data:bvalue framespan="30317:30321" value="false"/>
+                    <data:bvalue framespan="30322:30929" value="true"/>
+                    <data:bvalue framespan="30930:31006" value="false"/>
+                    <data:bvalue framespan="31007:31067" value="true"/>
+                    <data:bvalue framespan="31068:31217" value="false"/>
+                    <data:bvalue framespan="31218:31250" value="true"/>
+                    <data:bvalue framespan="31251:31266" value="false"/>
+                    <data:bvalue framespan="31267:31643" value="true"/>
+                    <data:bvalue framespan="31644:32517" value="false"/>
+                    <data:bvalue framespan="32518:32595" value="true"/>
+                    <data:bvalue framespan="32596:32613" value="false"/>
+                    <data:bvalue framespan="32614:32652" value="true"/>
+                    <data:bvalue framespan="32653:33019" value="false"/>
+                    <data:bvalue framespan="33020:33032" value="true"/>
+                    <data:bvalue framespan="33033:33194" value="false"/>
+                    <data:bvalue framespan="33195:33434" value="true"/>
+                    <data:bvalue framespan="33435:33463" value="false"/>
+                    <data:bvalue framespan="33464:33547" value="true"/>
+                    <data:bvalue framespan="33548:33598" value="false"/>
+                    <data:bvalue framespan="33599:33729" value="true"/>
+                    <data:bvalue framespan="33730:33940" value="false"/>
+                    <data:bvalue framespan="33941:33986" value="true"/>
+                    <data:bvalue framespan="33987:34239" value="false"/>
+                    <data:bvalue framespan="34240:35741" value="true"/>
+                    <data:bvalue framespan="35742:35925" value="false"/>
+                    <data:bvalue framespan="35926:36338" value="true"/>
+                    <data:bvalue framespan="36339:36656" value="false"/>
+                    <data:bvalue framespan="36657:36704" value="true"/>
+                    <data:bvalue framespan="36705:36930" value="false"/>
+                    <data:bvalue framespan="36931:36936" value="true"/>
+                    <data:bvalue framespan="36937:37098" value="false"/>
+                    <data:bvalue framespan="37099:37114" value="true"/>
+                    <data:bvalue framespan="37115:37121" value="false"/>
+                    <data:bvalue framespan="37122:37199" value="true"/>
+                    <data:bvalue framespan="37200:37555" value="false"/>
+                    <data:bvalue framespan="37556:37577" value="true"/>
+                    <data:bvalue framespan="37578:37626" value="false"/>
+                    <data:bvalue framespan="37627:37689" value="true"/>
+                    <data:bvalue framespan="37690:37908" value="false"/>
+                    <data:bvalue framespan="37909:38024" value="true"/>
+                    <data:bvalue framespan="38025:38060" value="false"/>
+                    <data:bvalue framespan="38061:38079" value="true"/>
+                    <data:bvalue framespan="38080:38090" value="false"/>
+                    <data:bvalue framespan="38091:38159" value="true"/>
+                    <data:bvalue framespan="38160:38180" value="false"/>
+                    <data:bvalue framespan="38181:38231" value="true"/>
+                    <data:bvalue framespan="38232:38473" value="false"/>
+                    <data:bvalue framespan="38474:38527" value="true"/>
+                    <data:bvalue framespan="38528:38600" value="false"/>
+                    <data:bvalue framespan="38601:38675" value="true"/>
+                    <data:bvalue framespan="38676:39144" value="false"/>
+                    <data:bvalue framespan="39145:39222" value="true"/>
+                    <data:bvalue framespan="39223:39296" value="false"/>
+                    <data:bvalue framespan="39297:39417" value="true"/>
+                    <data:bvalue framespan="39418:39473" value="false"/>
+                    <data:bvalue framespan="39474:39604" value="true"/>
+                    <data:bvalue framespan="39605:39651" value="false"/>
+                    <data:bvalue framespan="39652:39768" value="true"/>
+                    <data:bvalue framespan="39769:39951" value="false"/>
+                    <data:bvalue framespan="39952:40010" value="true"/>
+                    <data:bvalue framespan="40011:40240" value="false"/>
+                    <data:bvalue framespan="40241:42065" value="true"/>
+                    <data:bvalue framespan="42066:42117" value="false"/>
+                    <data:bvalue framespan="42118:42430" value="true"/>
+                    <data:bvalue framespan="42431:42489" value="false"/>
+                    <data:bvalue framespan="42490:42566" value="true"/>
+                    <data:bvalue framespan="42567:42576" value="false"/>
+                    <data:bvalue framespan="42577:42658" value="true"/>
+                    <data:bvalue framespan="42659:42704" value="false"/>
+                    <data:bvalue framespan="42705:43015" value="true"/>
+                    <data:bvalue framespan="43016:43139" value="false"/>
+                    <data:bvalue framespan="43140:43156" value="true"/>
+                    <data:bvalue framespan="43157:43318" value="false"/>
+                    <data:bvalue framespan="43319:43663" value="true"/>
+                    <data:bvalue framespan="43664:43792" value="false"/>
+                    <data:bvalue framespan="43793:43830" value="true"/>
+                    <data:bvalue framespan="43831:44056" value="false"/>
+                    <data:bvalue framespan="44057:44183" value="true"/>
+                    <data:bvalue framespan="44184:44260" value="false"/>
+                    <data:bvalue framespan="44261:44377" value="true"/>
+                    <data:bvalue framespan="44378:44445" value="false"/>
+                    <data:bvalue framespan="44446:44463" value="true"/>
+                    <data:bvalue framespan="44464:44697" value="false"/>
+                    <data:bvalue framespan="44698:44766" value="true"/>
+                    <data:bvalue framespan="44767:44778" value="false"/>
+                    <data:bvalue framespan="44779:44815" value="true"/>
+                    <data:bvalue framespan="44816:45062" value="false"/>
+                </attribute>
+                <attribute name="vandalism">
+                    <data:bvalue framespan="1:290" value="true"/>
+                    <data:bvalue framespan="291:307" value="false"/>
+                    <data:bvalue framespan="308:1796" value="true"/>
+                    <data:bvalue framespan="1797:1895" value="false"/>
+                    <data:bvalue framespan="1896:18939" value="true"/>
+                    <data:bvalue framespan="18940:19106" value="false"/>
+                    <data:bvalue framespan="19107:31894" value="true"/>
+                    <data:bvalue framespan="31895:31903" value="false"/>
+                    <data:bvalue framespan="31904:32813" value="true"/>
+                    <data:bvalue framespan="32814:32833" value="false"/>
+                    <data:bvalue framespan="32834:45062" value="true"/>
+                </attribute>
+            </object>
+        </sourcefile>
+    </data>
+</viper>

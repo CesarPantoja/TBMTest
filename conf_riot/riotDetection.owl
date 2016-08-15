@@ -1,0 +1,328 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#"
+     xml:base="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:TBM="http://mmv.eecs.qmul.ac.uk/TBM.owl#">
+    <owl:Ontology rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection">
+        <owl:imports rdf:resource="http://mmv.eecs.qmul.ac.uk/TBM.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#hasEvent -->
+
+    <owl:ObjectProperty rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#hasEvent">
+        <rdfs:domain rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#Frame"/>
+        <rdfs:range rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#Concept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#hasFrame -->
+
+    <owl:ObjectProperty rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#hasFrame">
+        <rdfs:domain rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#MediaItem"/>
+        <rdfs:range rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#Frame"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#hasGlobalPotential -->
+
+    <owl:ObjectProperty rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#hasGlobalPotential">
+        <rdfs:domain rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#Concept"/>
+        <rdfs:domain rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#Frame"/>
+        <rdfs:range rdf:resource="http://mmv.eecs.qmul.ac.uk/TBM.owl#Potential"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#hasFrameNumber -->
+
+    <owl:DatatypeProperty rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#hasFrameNumber">
+        <rdfs:domain rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#Frame"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#unsignedLong"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#Concept -->
+
+    <owl:Class rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#Concept">
+        <owl:disjointWith rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#Frame"/>
+    </owl:Class>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#Crowd -->
+
+    <owl:Class rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#Crowd">
+        <rdfs:subClassOf rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#Concept"/>
+    </owl:Class>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#FaceCovered -->
+
+    <owl:Class rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#FaceCovered">
+        <rdfs:subClassOf rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#Concept"/>
+    </owl:Class>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#Frame -->
+
+    <owl:Class rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#Frame"/>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#MediaItem -->
+
+    <owl:Class rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#MediaItem">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#hasFrame"/>
+                <owl:someValuesFrom rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#Frame"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#PresenceOfFire -->
+
+    <owl:Class rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#PresenceOfFire">
+        <rdfs:subClassOf rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#Concept"/>
+    </owl:Class>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#PresenceOfSmoke -->
+
+    <owl:Class rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#PresenceOfSmoke">
+        <rdfs:subClassOf rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#Concept"/>
+    </owl:Class>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#Riot -->
+
+    <owl:Class rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#Riot">
+        <rdfs:subClassOf rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#Concept"/>
+    </owl:Class>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#Running -->
+
+    <owl:Class rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#Running">
+        <rdfs:subClassOf rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#Concept"/>
+    </owl:Class>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#Vandalism -->
+
+    <owl:Class rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#Vandalism">
+        <rdfs:subClassOf rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#Concept"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#crowd -->
+
+    <owl:NamedIndividual rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#crowd">
+        <rdf:type rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#Crowd"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#face_covered -->
+
+    <owl:NamedIndividual rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#face_covered">
+        <rdf:type rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#FaceCovered"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#fire -->
+
+    <owl:NamedIndividual rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#fire">
+        <rdf:type rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#PresenceOfFire"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#no_crowd -->
+
+    <owl:NamedIndividual rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#no_crowd">
+        <rdf:type rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#Crowd"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#no_face_covered -->
+
+    <owl:NamedIndividual rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#no_face_covered">
+        <rdf:type rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#FaceCovered"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#no_fire -->
+
+    <owl:NamedIndividual rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#no_fire">
+        <rdf:type rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#PresenceOfFire"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#no_riot -->
+
+    <owl:NamedIndividual rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#no_riot">
+        <rdf:type rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#Riot"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#no_running -->
+
+    <owl:NamedIndividual rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#no_running">
+        <rdf:type rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#Running"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#no_smoke -->
+
+    <owl:NamedIndividual rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#no_smoke">
+        <rdf:type rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#PresenceOfSmoke"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#no_vandalism -->
+
+    <owl:NamedIndividual rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#no_vandalism">
+        <rdf:type rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#Vandalism"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#riot -->
+
+    <owl:NamedIndividual rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#riot">
+        <rdf:type rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#Riot"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#running -->
+
+    <owl:NamedIndividual rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#running">
+        <rdf:type rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#Running"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#smoke -->
+
+    <owl:NamedIndividual rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#smoke">
+        <rdf:type rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#PresenceOfSmoke"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#vandalism -->
+
+    <owl:NamedIndividual rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#vandalism">
+        <rdf:type rdf:resource="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#Vandalism"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://mmv.eecs.qmul.ac.uk/TBM.owl#Configuration"/>
+            <rdf:Description rdf:about="http://mmv.eecs.qmul.ac.uk/TBM.owl#FocalElement"/>
+            <rdf:Description rdf:about="http://mmv.eecs.qmul.ac.uk/TBM.owl#Potential"/>
+            <rdf:Description rdf:about="http://mmv.eecs.qmul.ac.uk/TBM.owl#VarDomain"/>
+            <rdf:Description rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#Concept"/>
+            <rdf:Description rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#Frame"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#Crowd"/>
+            <rdf:Description rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#FaceCovered"/>
+            <rdf:Description rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#PresenceOfFire"/>
+            <rdf:Description rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#PresenceOfSmoke"/>
+            <rdf:Description rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#Riot"/>
+            <rdf:Description rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#Running"/>
+            <rdf:Description rdf:about="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection#Vandalism"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi -->
+

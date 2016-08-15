@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
     <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
-        <uri id="Automatically generated entry, Timestamp=1442537571195" name="http://mmv.eecs.qmul.ac.uk/CLUE.owl" uri="TBM.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1470866752466" name="duplicate:http://mmv.eecs.qmul.ac.uk/CLUE.owl" uri="24.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1470866752466" name="duplicate:http://mmv.eecs.qmul.ac.uk/CLUE.owl" uri="CLUE.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1470866752466" name="http://mmv.eecs.qmul.ac.uk/ontologies/riotDetection" uri="riotDetection.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1470866752466" name="http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection" uri="data/violentSceneDetection.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1470866752466" name="http://www.w3.org/2003/11/swrl" uri="data/swrl.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1470866752466" name="shadowed:http://mmv.eecs.qmul.ac.uk/CLUE.owl" uri="data/CLUE.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1470866752466" name="shadowed:http://mmv.eecs.qmul.ac.uk/CLUE.owl" uri="data/CLUE.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1470866752466" name="shadowed:http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection" uri="conf/violentSceneDetection.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1470866752466" name="shadowed:http://mmv.eecs.qmul.ac.uk/ontologies/violentSceneDetection" uri="conf_riot/violentSceneDetection.owl"/>
     </group>
 </catalog>

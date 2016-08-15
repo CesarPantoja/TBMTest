@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viper xmlns="http://lamp.cfar.umd.edu/viper#" xmlns:data="http://lamp.cfar.umd.edu/viperdata#">
+    <config>
+        <descriptor name="Information" type="FILE">
+            <attribute dynamic="false" name="SOURCETYPE" type="http://lamp.cfar.umd.edu/viperdata#lvalue">
+                <data:lvalue-possibles>
+                    <data:lvalue-enum value="SEQUENCE"/>
+                    <data:lvalue-enum value="FRAMES"/>
+                </data:lvalue-possibles>
+            </attribute>
+            <attribute dynamic="false" name="NUMFRAMES" type="http://lamp.cfar.umd.edu/viperdata#dvalue"/>
+            <attribute dynamic="false" name="FRAMERATE" type="http://lamp.cfar.umd.edu/viperdata#fvalue"/>
+            <attribute dynamic="false" name="H-FRAME-SIZE" type="http://lamp.cfar.umd.edu/viperdata#dvalue"/>
+            <attribute dynamic="false" name="V-FRAME-SIZE" type="http://lamp.cfar.umd.edu/viperdata#dvalue"/>
+        </descriptor>
+        <descriptor name="Concepts" type="OBJECT">
+            <attribute dynamic="true" name="face_covered" type="http://lamp.cfar.umd.edu/viperdata#bvalue">
+                <default>
+                    <data:bvalue value="false"/>
+                </default>
+            </attribute>
+            <attribute dynamic="true" name="fire" type="http://lamp.cfar.umd.edu/viperdata#bvalue">
+                <default>
+                    <data:bvalue value="false"/>
+                </default>
+            </attribute>
+            <attribute dynamic="true" name="smoke" type="http://lamp.cfar.umd.edu/viperdata#bvalue">
+                <default>
+                    <data:bvalue value="false"/>
+                </default>
+            </attribute>
+            <attribute dynamic="true" name="crowd" type="http://lamp.cfar.umd.edu/viperdata#bvalue">
+                <default>
+                    <data:bvalue value="false"/>
+                </default>
+            </attribute>
+            <attribute dynamic="true" name="running" type="http://lamp.cfar.umd.edu/viperdata#bvalue">
+                <default>
+                    <data:bvalue value="false"/>
+                </default>
+            </attribute>
+            <attribute dynamic="true" name="riot" type="http://lamp.cfar.umd.edu/viperdata#bvalue">
+                <default>
+                    <data:bvalue value="false"/>
+                </default>
+            </attribute>
+            <attribute dynamic="true" name="vandalism" type="http://lamp.cfar.umd.edu/viperdata#bvalue">
+                <default>
+                    <data:bvalue value="false"/>
+                </default>
+            </attribute>
+        </descriptor>
+    </config>
+    <data>
+        <sourcefile filename="file:/D:/Research/frames/0d4a7b61ecf55f606c8190b440e7d8be.mp4/0d4a7b61ecf55f606c8190b440e7d8be.mp4.info">
+            <file id="0" name="Information">
+                <attribute name="SOURCETYPE"/>
+                <attribute name="NUMFRAMES">
+                    <data:dvalue value="45088"/>
+                </attribute>
+                <attribute name="FRAMERATE">
+                    <data:fvalue value="1.0"/>
+                </attribute>
+                <attribute name="H-FRAME-SIZE"/>
+                <attribute name="V-FRAME-SIZE"/>
+            </file>
+            <object
+                framespan="1:7773 8726:21345 21603:24447 24466:26027 26061:26226 26707:45088"
+                id="0" name="Concepts">
+                <attribute name="face_covered">
+                    <data:bvalue framespan="1:2281" value="true"/>
+                    <data:bvalue framespan="2282:3328" value="false"/>
+                    <data:bvalue framespan="3329:3447" value="true"/>
+                    <data:bvalue framespan="3448:7773" value="false"/>
+                    <data:bvalue framespan="8782:10323" value="true"/>
+                    <data:bvalue framespan="10324:10401" value="false"/>
+                    <data:bvalue framespan="10402:12556" value="true"/>
+                    <data:bvalue framespan="12557:12635" value="false"/>
+                    <data:bvalue framespan="12636:14295" value="true"/>
+                    <data:bvalue framespan="14296:17290" value="false"/>
+                    <data:bvalue framespan="17291:17570" value="true"/>
+                    <data:bvalue framespan="17571:17737" value="false"/>
+                    <data:bvalue framespan="17738:18543" value="true"/>
+                    <data:bvalue framespan="18544:21345" value="false"/>
+                    <data:bvalue framespan="21603:21817" value="true"/>
+                    <data:bvalue framespan="21818:22144" value="false"/>
+                    <data:bvalue framespan="22145:22472" value="true"/>
+                    <data:bvalue framespan="22473:23201" value="false"/>
+                    <data:bvalue framespan="23202:23542" value="true"/>
+                    <data:bvalue framespan="23543:24097" value="false"/>
+                    <data:bvalue framespan="24098:24268" value="true"/>
+                    <data:bvalue framespan="24269:24447" value="false"/>
+                    <data:bvalue framespan="24711:25130" value="true"/>
+                    <data:bvalue framespan="25131:25239" value="false"/>
+                    <data:bvalue framespan="25240:25273" value="true"/>
+                    <data:bvalue framespan="25274:25326" value="false"/>
+                    <data:bvalue framespan="25327:25454" value="true"/>
+                    <data:bvalue framespan="25455:25611" value="false"/>
+                    <data:bvalue framespan="25612:25691" value="true"/>
+                    <data:bvalue framespan="25692:25806" value="false"/>
+                    <data:bvalue framespan="25807:26000" value="true"/>
+                    <data:bvalue framespan="26001:26027" value="false"/>
+                    <data:bvalue framespan="26061:26088" value="true"/>
+                    <data:bvalue framespan="26089:26147" value="false"/>
+                    <data:bvalue framespan="26148:26166" value="true"/>
+                    <data:bvalue framespan="26167:26226" value="false"/>
+                </attribute>
+                <attribute name="fire">
+                    <data:bvalue framespan="1:7773" value="false"/>
+                </attribute>
+                <attribute name="smoke">
+                    <data:bvalue framespan="1:7773" value="false"/>
+                </attribute>
+                <attribute name="crowd">
+                    <data:bvalue framespan="1:4103" value="true"/>
+                    <data:bvalue framespan="4104:7773" value="false"/>
+                    <data:bvalue framespan="8726:10323" value="true"/>
+                    <data:bvalue framespan="10324:10401" value="false"/>
+                    <data:bvalue framespan="10402:12556" value="true"/>
+                    <data:bvalue framespan="12557:12635" value="false"/>
+                    <data:bvalue framespan="12636:14295" value="true"/>
+                    <data:bvalue framespan="14296:14598" value="false"/>
+                    <data:bvalue framespan="14599:16499" value="true"/>
+                    <data:bvalue framespan="16500:21345" value="false"/>
+                    <data:bvalue framespan="22629:24447" value="true"/>
+                    <data:bvalue framespan="24466:25412" value="true"/>
+                    <data:bvalue framespan="25413:26027" value="false"/>
+                    <data:bvalue framespan="34607:35691" value="true"/>
+                    <data:bvalue framespan="35692:36190" value="false"/>
+                    <data:bvalue framespan="36191:36983" value="true"/>
+                    <data:bvalue framespan="36984:37989" value="false"/>
+                    <data:bvalue framespan="37990:38525" value="true"/>
+                    <data:bvalue framespan="38526:45088" value="false"/>
+                </attribute>
+                <attribute name="running">
+                    <data:bvalue framespan="1:3324" value="false"/>
+                    <data:bvalue framespan="3325:3504" value="true"/>
+                    <data:bvalue framespan="3505:4241" value="false"/>
+                    <data:bvalue framespan="4242:4401" value="true"/>
+                    <data:bvalue framespan="4402:7773" value="false"/>
+                    <data:bvalue framespan="17155:17290" value="true"/>
+                    <data:bvalue framespan="17291:18203" value="false"/>
+                    <data:bvalue framespan="18204:18361" value="true"/>
+                    <data:bvalue framespan="18362:21345" value="false"/>
+                    <data:bvalue framespan="25136:25231" value="true"/>
+                    <data:bvalue framespan="25232:25273" value="false"/>
+                    <data:bvalue framespan="25274:25412" value="true"/>
+                    <data:bvalue framespan="25413:26027" value="false"/>
+                    <data:bvalue framespan="28646:28765" value="true"/>
+                    <data:bvalue framespan="28766:33847" value="false"/>
+                    <data:bvalue framespan="33848:33951" value="true"/>
+                    <data:bvalue framespan="33952:35611" value="false"/>
+                    <data:bvalue framespan="35612:35686" value="true"/>
+                    <data:bvalue framespan="35687:37117" value="false"/>
+                    <data:bvalue framespan="37118:37196" value="true"/>
+                    <data:bvalue framespan="37197:38089" value="false"/>
+                    <data:bvalue framespan="38090:38137" value="true"/>
+                    <data:bvalue framespan="38138:39914" value="false"/>
+                    <data:bvalue framespan="39915:40155" value="true"/>
+                    <data:bvalue framespan="40156:41801" value="false"/>
+                    <data:bvalue framespan="41802:41921" value="true"/>
+                    <data:bvalue framespan="41922:43023" value="false"/>
+                    <data:bvalue framespan="43024:43147" value="true"/>
+                    <data:bvalue framespan="43148:45088" value="false"/>
+                </attribute>
+                <attribute name="riot">
+                    <data:bvalue framespan="1:7773" value="false"/>
+                </attribute>
+                <attribute name="vandalism">
+                    <data:bvalue framespan="1:7773" value="false"/>
+                    <data:bvalue framespan="8726:21345" value="false"/>
+                    <data:bvalue framespan="21603:24447" value="false"/>
+                    <data:bvalue framespan="24466:26027" value="false"/>
+                    <data:bvalue framespan="26061:26226" value="false"/>
+                    <data:bvalue framespan="26707:45088" value="false"/>
+                </attribute>
+            </object>
+        </sourcefile>
+    </data>
+</viper>

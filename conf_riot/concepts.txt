@@ -1,0 +1,7 @@
+crowd Crowd
+vandalism Vandalism
+running Running
+smoke PresenceOfSmoke
+face_covered FaceCovered
+fire PresenceOfFire
+riot Riot

@@ -1,0 +1,7 @@
+crowd
+vandalism
+running
+smoke
+face_covered
+fire
+#riot
