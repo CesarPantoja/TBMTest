@@ -1,7 +1,7 @@
 crowd
 vandalism
 running
-smoke
+#smoke
 face_covered
 fire
 #riot

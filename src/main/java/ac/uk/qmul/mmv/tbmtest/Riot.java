@@ -11,17 +11,20 @@ import ac.uk.qmul.mmv.tbm.model.TBMModelFactory;
 import ac.uk.qmul.mmv.tbm.model.TBMPotential;
 import ac.uk.qmul.mmv.tbm.model.TBMVarDomain;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.BitSet;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.function.Consumer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -138,6 +141,8 @@ public class Riot {
                 });
                 System.out.println();
             });*/
+            
+            
             // </editor-fold>
             // <editor-fold defaultstate="collapsed" desc="Compute combined potentials for each concept">
             LOG.log(Level.INFO, "Computing combined potentials");
@@ -227,6 +232,7 @@ public class Riot {
                     }
                 }   // </editor-fold>
                 // </editor-fold>
+                
                 // <editor-fold defaultstate="collapsed" desc="Populate KB">
                 Set<String> movies_test = new HashSet<>();
                 Files.lines(Paths.get("conf_riot/movies_test.txt"))
@@ -239,6 +245,7 @@ public class Riot {
 
                 for (String movie : movies_test) {
 
+                    
                     if (model.contains(model.createResource(ont + movie), RDF.type, model.createResource(ont + "MediaItem"))) {
                         continue;
                     }
@@ -258,9 +265,9 @@ public class Riot {
 
                         for (Integer frame : movies.get(movie).get(concept).stream().toArray()) {
                             //Integer frame = 33600;
-                            if (frame % 24 != 0) {
+                            /*if (frame % 24 != 0) {
                                 continue;
-                            }
+                            }*/
 
                             //LOG.log(Level.INFO, "### frame {0}", frame);
 
@@ -310,17 +317,56 @@ public class Riot {
                             if (model.supportsTransactions()) {
                                 model.commit();
                             }
-                            
-                            
                         }
                     }
                     //dataset.end();
                 }   // </editor-fold>
 
                 //query the system and print
+                List<TBMFocalElement> queryFEs = vars.entrySet().stream().map(entry -> getQueryFE(model, ont, entry.getValue(), entry.getKey())).collect(Collectors.toList());
+
+                String heading = "FRAME," + vars.keySet().stream().collect(Collectors.joining(",")) + ",RIOT\n";
+                try (FileWriter o = new FileWriter("conf_riot/res/result_.csv")) {
+                    
+                    o.write(heading);
+
+                    for (String movie : movies_test) {
+                        //System.out.println(movie+"************************");
+                        //dataset.end();
+
+                        Resource movieRes = model.getResource(ont + movie);
+
+                        ExtendedIterator<Resource> framesIter = movieRes.listProperties(hasFrame).mapWith(x -> x.getResource());
+
+                        /*System.out.println(movie+"*************************");
+                        System.out.print(heading);*/
+
+                        while (framesIter.hasNext()) {
+                            Resource currFrame = framesIter.next();
+                            int frameNo = currFrame.getProperty(hasFrameNumber).getInt();
+
+                            TBMPotential p = currFrame.getProperty(hasGlobalPotential).getResource().as(TBMPotential.class);
+
+                            //printPotential(p);
+                            //double bel = p.bel(query);
+                            String msg = String.valueOf(frameNo) + ","
+                                    + queryFEs.stream()
+                                    .map(query -> String.valueOf(p.bel(query)))
+                                    .collect(Collectors.joining(","))
+                                    + "," + (movies.get(movie).get("riot").get(frameNo) ? 1 : 0) + "\n";
+
+                            //String msg = String.format("%s,%s,%s\n", frameNo,bel,);
+                            o.write(msg);
+                            //System.out.print(msg);
+                            //System.out.println("" + frameNo + "," + bel + "," + (movies.get(movie).get("riot").get(frameNo) ? 1 : 0));
+                        }
+                    }
+                    o.flush();
+
+                }
                 
                 //dataset.begin(ReadWrite.WRITE);
-                model.createFocalElement(ont + "queryFocalElement").remove();
+                /*model.createFocalElement(ont + "queryFocalElement").remove();
                 TBMFocalElement query = model.createFocalElement(ont + "queryFocalElement");
                 TBMVarDomain d = model.createDomain();
                 d.addVariable(model.createResource(ont + "Violence"));
@@ -386,7 +432,7 @@ public class Riot {
                     } else {
                         query_string.append(curr_line).append("\n");
                     }
-                }
+                }*/
                 //insert concepts in knowledge base
                 //learn rules
             }
@@ -395,6 +441,18 @@ public class Riot {
         } catch (IOException ex) {
             Logger.getLogger(Riot.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+        
+    private static TBMFocalElement getQueryFE(TBMModel model, String ont, String conceptVar, String conceptInst) {
+        TBMFocalElement query = model.createFocalElement(ont + "queryFocalElement" + conceptVar);
+        TBMVarDomain d = model.createDomain();
+        d.addVariable(model.createResource(ont + conceptVar));
+        query.setDomain(d);
+        query.addConfiguration(model.createResource(ont + conceptInst));
+        if (model.supportsTransactions()) {
+            model.commit();
+        }
+        return query;
     }
 
     private static void printPotential(TBMPotential p) {
@@ -488,45 +546,6 @@ public class Riot {
                 Logger.getLogger(Riot.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-    }
-
-    private static void LoadVideoConcept(String file, BitSet data) {
-        try {
-            Files.lines(Paths.get("conf/GT/" + file)).forEach(line -> {
-                if (!line.isEmpty()) {
-                    String[] parts = line.split(" ");
-
-                    int startFrame = Integer.parseInt(parts[0]);
-                    int endFrame = Integer.parseInt(parts[1]);
-
-                    data.set(startFrame, endFrame + 1);
-                }
-
-            });
-        } catch (IOException ex) {
-            Logger.getLogger(Riot.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    private static void LoadAudioConcept(String file, BitSet data) {
-        try {
-            Files.lines(Paths.get("conf/GT/" + file)).forEach(line -> {
-                if (!line.isEmpty()) {
-                    String[] parts = line.split(" ");
-                    double startTime = Double.parseDouble(parts[0]);
-                    double endTime = Double.parseDouble(parts[1]);
-
-                    int startFrame = TimeToFrame(startTime);
-                    int endFrame = TimeToFrame(endTime);
-
-                    boolean value = !parts[2].equals("(nothing)");
-
-                    data.set(startFrame, endFrame + 1, value);
-                }
-            });
-        } catch (IOException ex) {
-            Logger.getLogger(Riot.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 
     private static int TimeToFrame(double time) {
